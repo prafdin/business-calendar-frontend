@@ -1,16 +1,19 @@
 <html>
 <head>
+    <meta charset=utf-8>
     <link rel="icon" href="resources/icon_logo.png">
     <link href="resources/fonts/fonts.css" rel="stylesheet"/>
-    <link href="businessCalendar.css" rel="stylesheet"/>
+    <link rel="stylesheet/less" type="text/css" href="businessCalendar.less"/>
     <title>Деловые связи</title>
 </head>
 <body>
 <header class="header-menu">
-    <img class="header-menu__logo" src="resources/logo.png"/>
-    <div class="header-menu__actions">
-        <button class="header-menu__actions _button _login">Войти</button>
-        <button class="header-menu__actions _button _register">Зарегистрироваться</button>
+    <div class="header-menu__wrapper">
+        <img class="header-menu__logo" src="resources/logo.png"/>
+        <div class="header-menu__actions">
+            <button class="header-menu__actions _button _login">Войти</button>
+            <button class="header-menu__actions _button _register">Зарегистрироваться</button>
+        </div>
     </div>
 </header>
 <section>
@@ -30,8 +33,6 @@
         </div>
     </div>
     <div class="events-calendar">
-        <h1 class="events-calendar__text">Афиша Самары</h1>
-        <div style=" width:1220px ; height:697px; background : #7635BD; margin-top:10px;margin-bottom: 10px;"></div>
         <div class="events-calendar__container">
             <div class="events-calendar__card">
                 <div class="events-calendar__event-image"></div>
@@ -60,5 +61,6 @@
 <footer class="footer">
 
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/less"></script>
 </body>
 </html>
