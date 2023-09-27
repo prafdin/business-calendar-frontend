@@ -1,216 +1,237 @@
 @import url("resources/fonts/fonts.css");
-body {
-  margin: 0 !important;
-  width: 1920px;
-  height: 3240px;
-  background: #fff;
-}
-.announcementEvents__text {
-  margin: 0 !important;
-  color: var(--black, #262626);
-  font-family: "Acrom";
-  font-size: 42px;
-  font-style: normal;
-  width: 449px;
-  height: 55px;
-  font-weight: 600;
-  line-height: 54.6px;
-}
-.announcementEvents {
-  width: 1278px;
-  height: 544px;
-  margin-left: 352px;
-  margin-right: 290px;
-  margin-top: 85px;
-  background: #fff;
-}
-.announcementEvents_main {
-  display: flex;
-  align-items: center;
-  margin-top: 45px;
-}
-.announcementEvents_main_events {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-shrink: 0;
-  width: 1218px;
-  height: 444px;
-  gap: 30px;
-  background: #fff;
-}
-.announcementEvents_main_events__event {
-  width: 386px;
-  height: 444px;
-  background: #d9d9d9;
-}
-.eventsCalendar {
-  width: 1220px;
-  height: 1882px;
-  margin-left: 351px;
-  margin-right: 351px;
-  margin-top: 90px;
-  background-color: #fff;
-}
-.eventsCalendar__text {
-  display: flex;
-  margin: 0 !important;
-  color: var(--black, #262626);
-  font-family: "Acrom";
-  font-size: 42px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 54.6px;
-  /* width: 352px; */
-  height: 55px;
-}
-.eventsCalendar_containerCards {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-shrink: 0;
-  gap: 30px;
-  width: 1220px;
-  height: 1130px;
-}
-.eventsCalendar_containerCards_cards {
-  width: 386px;
-  height: 543px;
-  padding: 30px 20px;
-  border-radius: 20px;
-  border: 3px solid var(--light-gray, #f4f4f4);
-  background: #fff;
-}
-.eventsCalendar_containerCards_cards__card {
-  background: #fff;
-}
-.event_date {
-  margin-top: 10px;
-  color: var(--dark-gray, #c2c2c2);
-  font-family: "Acrom";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-  width: 346px;
-  height: 20px;
-}
-.event_description {
-  margin-top: 10px;
-  align-self: stretch;
-  color: var(--black, #262626);
-  font-family: "Acrom";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 23.4px;
-  width: 346px;
-  height: 52px;
-}
-.event_name {
-  margin-top: 20px;
-  font-family: "Acrom";
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  width: 346px;
-  height: 80px;
-  word-wrap: break-word;
-}
-.event_preview {
-  /* flex: 1 0 0;
-    align-self: stretch; */
-  background: #d9d9d9;
-  width: 346px;
-  height: 242px;
-}
-.event_subscribe {
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--black, #262626);
-  background-color: #fff;
-  color: var(--black, #262626);
 
-  font-family: "Acrom";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+body {
+    margin: 0 !important;
+    width: 1920px;
+    height: 3240px;
+    background: #fff;
 }
-.myFooter {
-  display: flex;
-  width: 1920px;
-  height: 480px;
-  flex-shrink: 0;
-  margin-top: 89px;
-  background: var(--light-gray, #f4f4f4);
+
+.announcement-events__title {
+    margin: 0 !important;
+    color: var(--black, #262626);
+    font-family: "Acrom";
+    font-size: 42px;
+    font-style: normal;
+    width: 449px;
+    height: 55px;
+    font-weight: 600;
+    line-height: 54.6px;
 }
+
+.announcement-events {
+    width: 1278px;
+    height: 544px;
+    margin-left: 352px;
+    margin-right: 290px;
+    margin-top: 85px;
+    background: #fff;
+}
+
+.announcement-events__events-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.announcement-events__events {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1218px;
+    height: 444px;
+    gap: 30px;
+    background: #fff;
+}
+
+.announcement-events__event {
+    width: 386px;
+    height: 444px;
+    background: #d9d9d9;
+}
+
+.events-calendar {
+    width: 1220px;
+    height: 1882px;
+    margin-left: 351px;
+    margin-right: 351px;
+    margin-top: 90px;
+    background-color: #fff;
+}
+
+.events-calendar__text {
+    display: flex;
+    margin: 0 !important;
+    color: var(--black, #262626);
+    font-family: "Acrom";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 54.6px;
+    /* width: 352px; */
+    height: 55px;
+}
+
+.events-calendar__container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 30px;
+    width: 1220px;
+    height: 1130px;
+}
+
+.events-calendar__card {
+    background: #fff;
+    width: 386px;
+    height: 543px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    border: 3px solid var(--light-gray, #f4f4f4);
+    background: #fff;
+}
+
+.events-calendar__event-date {
+    margin-top: 10px;
+    color: var(--dark-gray, #c2c2c2);
+    font-family: "Acrom";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    width: 346px;
+    height: 20px;
+}
+
+.events-calendar__event-description {
+    margin-top: 10px;
+    align-self: stretch;
+    color: var(--black, #262626);
+    font-family: "Acrom";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23.4px;
+    width: 346px;
+    height: 52px;
+}
+
+.events-calendar__event-name {
+    margin-top: 20px;
+    font-family: "Acrom";
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 346px;
+    height: 80px;
+    word-wrap: break-word;
+}
+
+.events-calendar__event-image {
+    /* flex: 1 0 0;
+      align-self: stretch; */
+    background: #d9d9d9;
+    width: 346px;
+    height: 242px;
+}
+
+.events-calendar__event-action {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--black, #262626);
+    background-color: #fff;
+    color: var(--black, #262626);
+
+    font-family: "Acrom";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.footer {
+    display: flex;
+    width: 1920px;
+    height: 480px;
+    flex-shrink: 0;
+    margin-top: 89px;
+    background: var(--light-gray, #f4f4f4);
+}
+
 header {
-  height: 70px;
-  width: 1920px;
-  flex-shrink: 0;
-  background: var(--white, #fff);
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
+    height: 70px;
+    width: 1920px;
+    flex-shrink: 0;
+    background: var(--white, #fff);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
 }
-.header_menu {
-  display: flex;
-  width: 1220px;
-  align-items: center;
-  gap: 639px;
-  background: var(--white, #fff);
-  margin-left: 351;
-  margin-right: 351;
+
+.header-menu {
+    display: flex;
+    width: 1220px;
+    align-items: center;
+    gap: 639px;
+    background: var(--white, #fff);
+    margin-left: 351;
+    margin-right: 351;
 }
-.header__img {
-  display: flex;
-  width: 200px;
-  height: 70px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+
+.header-menu__logo {
+    display: flex;
+    width: 200px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
-.header_menu_signActions {
-  display: flex;
-  width: 379px;
-  height: 49px;
-  gap: 16px;
-  align-items: flex-start;
+
+.header-menu__actions {
+    display: flex;
+    width: 379px;
+    height: 49px;
+    gap: 16px;
+    align-items: flex-start;
 }
-.header_menu_signActions__button {
-  display: flex;
-  height: 49px;
-  padding: 15px 35px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 20px;
-  border: none;
+
+.header-menu__actions._button {
+    display: flex;
+    height: 49px;
+    padding: 15px 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    border: none;
 }
-.header_menu_signActions__button_signIn {
-  width: 120px;
-  background: var(--white, #fff);
-  color: var(--primary-purple, #7635bd);
-  text-align: center;
-  font-family: "Acrom";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 19.2px;
+
+.header-menu__actions._login {
+    width: 120px;
+    background: var(--white, #fff);
+    color: var(--primary-purple, #7635bd);
+    text-align: center;
+    font-family: "Acrom";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19.2px;
 }
-.header_menu_signActions__button_signUp {
-  width: 234px;
-  background: var(--primary-purple, #7635bd);
-  color: var(--text-white, #fff);
-  text-align: center;
-  font-family: "Acrom";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+
+.header-menu__actions._register {
+    width: 234px;
+    background: var(--primary-purple, #7635bd);
+    color: var(--text-white, #fff);
+    text-align: center;
+    font-family: "Acrom";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
