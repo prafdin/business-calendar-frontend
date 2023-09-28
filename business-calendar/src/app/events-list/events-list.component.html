@@ -1,0 +1,11 @@
+<div class="events-list">
+    <event-card *ngFor="let event of data"
+                class="events-list__card"
+                [image]="event.image"
+                [price]="event.price"
+                [place]="event.place"
+                [date]="event.date"
+                [location]="event.location"
+                [title]="event.title"
+    ></event-card>
+</div>
