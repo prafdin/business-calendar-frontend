@@ -11,12 +11,13 @@
 
         img {
             width: 100%;
+            height: 251px;
         }
     }
 
     &__price {
         position: absolute;
-        bottom: 15px;
+        bottom: 18px;
         left: 10px;
         width: 109px;
         height: 29px;
@@ -48,5 +49,10 @@
         border: none;
         color: white;
         cursor: pointer;
+        transition: background .25s;
+
+        &:hover, &:active {
+            background: #6928B0;
+        }
     }
 }

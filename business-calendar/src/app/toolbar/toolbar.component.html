@@ -1,0 +1,62 @@
+<div class="toolbar">
+    <div class="toolbar__search-wrapper">
+        <img src="assets/search-icon.svg" class="toolbar__search-icon">
+        <input type="text" placeholder="Поиск события" class="toolbar__search">
+        <img src="assets/Filter-icon.svg" class="toolbar__search-filter">
+    </div>
+    <div class="toolbar__calendar-wrapper">
+        <div class="toolbar__calendar-icon"></div>
+        <div class="toolbar__calendar-arrow-left"></div>
+        <div class="toolbar__calendar">
+            <mat-form-field class="toolbar__calendar-month-picker">
+                <mat-label>Месяц</mat-label>
+                <mat-select [(value)]="selectedMonth"
+                            (selectionChange)="onMonthSelect($event)"
+                >
+                    <mat-option value="{{month.value}}"
+                                *ngFor="let month of monthPickerOptions"
+                    >{{ month.text }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="toolbar__calendar-slider-wrapper">
+                <div class="toolbar__calendar-slider" #sliderRef>
+                    <div class="toolbar__calendar-cell keen-slider__slide"
+                         *ngFor="let item of calendarSliderData"
+                         [ngClass]="{'_month': !item.subTitle}"
+                    >
+                        <div *ngIf="item.subTitle; else monthCell"
+                             class="toolbar__calendar-cell-day"
+                        >
+                            <div class="toolbar__calendar-cell-title">{{ item.title }}</div>
+                            <div class="toolbar__calendar-cell-weekday"
+                               [ngClass]="{'_weekend': isWeekendDay(item.subTitle)}"
+                            >{{ item.subTitle }}</div>
+                        </div>
+                        <ng-template #monthCell>
+                            <div class="toolbar__calendar-cell-month">{{ item.title }}</div>
+                        </ng-template>
+                    </div>
+                </div>
+                <svg
+                    class="toolbar__calendar-arrow arrow--left"
+                    (click)="slider.prev()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+                    />
+                </svg>
+                <svg
+                    *ngIf="slider"
+                    class="toolbar__calendar-arrow arrow--right"
+                    (click)="slider.next()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                >
+                    <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

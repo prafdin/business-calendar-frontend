@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class PosterComponent {
     public data: any[] = [
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",
@@ -16,7 +16,7 @@ export class PosterComponent {
             title: "Название мероприятия"
         },
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",
@@ -24,7 +24,7 @@ export class PosterComponent {
             title: "Название мероприятия"
         },
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",
@@ -32,7 +32,7 @@ export class PosterComponent {
             title: "Название мероприятия"
         },
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",
@@ -40,7 +40,7 @@ export class PosterComponent {
             title: "Название мероприятия"
         },
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",
@@ -48,7 +48,7 @@ export class PosterComponent {
             title: "Название мероприятия"
         },
         {
-            image: "https://sun9-44.userapi.com/impg/ZfVwnV5La3RNbEbMAxYOEZoQ3Ti_na7ap7v2fw/Fo_jJIAVeTc.jpg?size=2560x1927&quality=95&sign=0136c76e4a60eec1adc5d0d094fffe1d&type=album",
+            image: "https://img2.akspic.ru/attachments/crops/2/4/0/2/52042/52042-festival-sobytie-koncert-not_in_this_lifetime_tour-appetite_for_destruction-1920x1080.jpg",
             price: "Бесплатно",
             date: "29 сентября, 17:00, 2 часа",
             location: "Самара",

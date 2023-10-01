@@ -10,10 +10,6 @@
 	src: url(Acrom-Regular.ttf);
 }
 @font-face {
-	font-family: 'Kameron';
-	src: url(../../../businessCalendar/resources/fonts/Kameron-Regular.ttf);
-}
-@font-face {
 	font-family: 'Acrom';
 	font-weight: 800;
 	src: url(Acrom-Bold.ttf);

@@ -1,16 +1,21 @@
 <div class="announcements">
-    <h1 class="announcements__title">Анонс мероприятий</h1>
-    <div class="navigation-wrapper">
-        <div class="keen-slider keen-slider--vertical" #sliderRef>
-            <div class="keen-slider__slide number-slide1">1</div>
-            <div class="keen-slider__slide number-slide2">2</div>
-            <div class="keen-slider__slide number-slide3">3</div>
-            <div class="keen-slider__slide number-slide4">4</div>
-            <div class="keen-slider__slide number-slide5">5</div>
-            <div class="keen-slider__slide number-slide6">6</div>
+    <div class="announcements__title">Анонс мероприятий</div>
+    <div class="announcements__slider-wrapper">
+        <div class="announcements__slider" #sliderRef>
+            <div class="announcements__slide keen-slider__slide number-slide1"
+                 *ngFor="let announcement of data"
+            >
+                <img class="announcements__slide-image" src="{{ announcement.image }}">
+                <div class="announcements__slide-fade"></div>
+                <div class="announcements__slide-info-wrapper">
+                    <div class="announcements__slide-title">{{ announcement.title }}</div>
+                    <div class="announcements__slide-date">{{ announcement.date }}</div>
+                    <div class="announcements__slide-place">{{ announcement.place }}</div>
+                </div>
+            </div>
         </div>
         <svg
-            class="arrow arrow--left"
+            class="announcements__arrow arrow--left"
             (click)="slider.prev()"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -21,7 +26,7 @@
         </svg>
         <svg
             *ngIf="slider"
-            class="arrow arrow--right"
+            class="announcements__arrow arrow--right"
             (click)="slider.next()"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -29,11 +34,11 @@
             <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
         </svg>
     </div>
-    <div class="dots">
+    <div class="announcements__dots">
         <button
             (click)="slider.moveToIdx(i)"
             *ngFor="let slide of dotHelper; let i = index"
-            [class]="'dot ' + (i === currentSlide ? 'active' : '')"
+            [class]="'announcements__dot ' + (i === currentSlide ? 'active' : '')"
         ></button>
     </div>
 </div>

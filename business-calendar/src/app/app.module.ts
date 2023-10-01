@@ -7,6 +7,9 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { PosterComponent } from './poster/poster.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { EventsListComponent } from './events-list/events-list.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -15,11 +18,14 @@ import { EventsListComponent } from './events-list/events-list.component';
         AnnouncementsComponent,
         PosterComponent,
         EventCardComponent,
-        EventsListComponent
+        EventsListComponent,
+        ToolbarComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSelectModule
     ],
     providers: [],
     bootstrap: [AppComponent]
