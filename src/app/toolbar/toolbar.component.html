@@ -1,9 +1,9 @@
 <div class="toolbar">
-    <div class="toolbar__search-wrapper">
-        <img src="assets/search-icon.svg" class="toolbar__search-icon">
-        <input type="text" placeholder="Поиск события" class="toolbar__search">
-        <img src="assets/Filter-icon.svg" class="toolbar__search-filter">
-    </div>
+<!--    <div class="toolbar__search-wrapper">-->
+<!--        <img src="assets/search-icon.svg" class="toolbar__search-icon">-->
+<!--        <input type="text" placeholder="Поиск события" class="toolbar__search">-->
+<!--        <img src="assets/Filter-icon.svg" class="toolbar__search-filter">-->
+<!--    </div>-->
     <div class="toolbar__calendar-wrapper">
         <div class="toolbar__calendar-icon"></div>
         <div class="toolbar__calendar-arrow-left"></div>
@@ -22,7 +22,7 @@
                 <div class="toolbar__calendar-slider" #sliderRef>
                     <div class="toolbar__calendar-cell keen-slider__slide"
                          *ngFor="let item of calendarSliderData"
-                         [ngClass]="{'_month': !item.subTitle}"
+                         [ngClass]="{'_month': !item.subTitle, '_day': item.isCurrentDate}"
                     >
                         <div *ngIf="item.subTitle; else monthCell"
                              class="toolbar__calendar-cell-day"

@@ -42,7 +42,7 @@ export class ToolbarComponent implements AfterViewInit {
         4: "Чт",
         5: "Пт",
         6: "Сб",
-        7: "Вс",
+        0: "Вс",
     };
     public monthPickerOptions: any[] = [
         { text: "Январь", value: "Jan", slideNumber: 0 },
@@ -95,7 +95,8 @@ export class ToolbarComponent implements AfterViewInit {
             }
             this.calendarSliderData.push({
                 title: dayItem.date(),
-                subTitle: this.weekDaysDictionary[dayItem.weekday() + 1]
+                subTitle: this.weekDaysDictionary[dayItem.weekday()],
+                isCurrentDate: dayItem.toDate().toLocaleDateString() === new Date().toLocaleDateString()
             });
         }
         return calendar;

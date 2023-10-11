@@ -45,17 +45,17 @@
             align-items: center;
             justify-content: center;
             font-size: 50px;
-            height: 71px;
-            width: 69px;
-            max-height: 100vh;
-            border-radius: 20px;
+            height: 72px;
+            width: 50px;
+            max-height:100vh;
+            border-radius: 4px;
             background: white;
             color: black;
             font-weight: 300;
             transition: background .25s;
             cursor: pointer;
 
-            &._month {
+            &._month, &._day {
                 background: #E8E8E8;
                 border-radius: 0;
             }
@@ -86,6 +86,8 @@
                 font-size: 16px;
                 margin-bottom: 15px;
                 color: #C2C2C2;
+                text-transform: lowercase;
+                font-weight: 500;
 
                 &._weekend {
                     color: #56BEE2;
@@ -93,7 +95,7 @@
             }
 
             &:hover {
-                background: #F4F4F4;
+                background: #7635BD;
             }
 
             &:active {

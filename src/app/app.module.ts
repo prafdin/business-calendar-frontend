@@ -10,6 +10,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
+import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
         PosterComponent,
         EventCardComponent,
         EventsListComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

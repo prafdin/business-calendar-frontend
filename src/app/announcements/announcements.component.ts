@@ -32,24 +32,6 @@ export class AnnouncementsComponent implements AfterViewInit, OnDestroy {
             date: "29 сентября, 17:00, 2 часа",
             place: "Ново-Садовая, 3, Самара",
             title: "Название мероприятия"
-        },
-        {
-            image: "https://images.wallpaperscraft.ru/image/single/kontsert_tolpa_liudi_134866_1600x900.jpg",
-            date: "29 сентября, 17:00, 2 часа",
-            place: "Ново-Садовая, 3, Самара",
-            title: "Название мероприятия"
-        },
-        {
-            image: "https://images.wallpaperscraft.ru/image/single/kontsert_tolpa_liudi_134866_1600x900.jpg",
-            date: "29 сентября, 17:00, 2 часа",
-            place: "Ново-Садовая, 3, Самара",
-            title: "Название мероприятия"
-        },
-        {
-            image: "https://images.wallpaperscraft.ru/image/single/kontsert_tolpa_liudi_134866_1600x900.jpg",
-            date: "29 сентября, 17:00, 2 часа",
-            place: "Ново-Садовая, 3, Самара",
-            title: "Название мероприятия"
         }
     ];
 
