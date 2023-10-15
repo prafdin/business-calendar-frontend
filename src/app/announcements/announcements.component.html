@@ -15,6 +15,7 @@
             </div>
         </div>
         <svg
+            *ngIf="data.length > 1"
             class="announcements__arrow arrow--left"
             (click)="slider.prev()"
             xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +26,7 @@
             />
         </svg>
         <svg
-            *ngIf="slider"
+            *ngIf="data.length > 1"
             class="announcements__arrow arrow--right"
             (click)="slider.next()"
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +35,7 @@
             <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
         </svg>
     </div>
-    <div class="announcements__dots">
+    <div class="announcements__dots" *ngIf="data.length > 1">
         <button
             (click)="slider.moveToIdx(i)"
             *ngFor="let slide of dotHelper; let i = index"
