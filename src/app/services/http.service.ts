@@ -11,6 +11,6 @@ export class HttpService {
     }
 
     public getEvents(date: string, offset: number): Observable<any> {
-        return this.http.get(`http://localhost:5077/Event/targetdate=${date}&offset=${offset}`);
+        return this.http.get(`/Event/targetdate=${date}&offset=${offset}`);
     }
 }
