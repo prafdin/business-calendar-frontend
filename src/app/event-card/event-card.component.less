@@ -15,21 +15,8 @@
         }
     }
 
-    //&__price {
-    //    position: absolute;
-    //    bottom: 18px;
-    //    left: 10px;
-    //    width: 109px;
-    //    height: 29px;
-    //    border-radius: 20px;
-    //    background: linear-gradient(90deg, #7635BD 0%, #56BEE2 100%);
-    //    color: white;
-    //    text-align: center;
-    //    line-height: 29px;
-    //}
-
     &__title {
-        margin-top: 20px;
+        margin-top: 14px;
         font-size: 36px;
         font-weight: 300;
         margin-bottom: 10px;
@@ -39,6 +26,22 @@
         font-size: 16px;
         font-weight: 400;
         color: #C2C2C2;
+    }
+
+    &__date {
+        & > img {
+            position: relative;
+            top: 2px;
+            left: 2px;
+            margin-right: 2px;
+        }
+    }
+
+    &__place {
+        & > img {
+            position: relative;
+            top: 6px;
+        }
     }
 
     &__action {
