@@ -44,6 +44,7 @@ export class AnnouncementsComponent implements AfterViewInit, OnDestroy {
                         this.currentSlide = s.track.details.rel
                     },
                     loop: true,
+                    drag: false
                 }
             )
             this.dotHelper = [

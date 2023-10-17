@@ -11,6 +11,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import {FooterComponent} from "./footer/footer.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import {FooterComponent} from "./footer/footer.component";
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatSelectModule
+        MatSelectModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -23,6 +23,7 @@
                     <div class="toolbar__calendar-cell keen-slider__slide"
                          *ngFor="let item of calendarSliderData"
                          [ngClass]="{'_month': !item.subTitle, '_day': item.isCurrentDate}"
+                         (click)="onCellClick(item)"
                     >
                         <div *ngIf="item.subTitle; else monthCell"
                              class="toolbar__calendar-cell-day"

@@ -1,10 +1,13 @@
 <div class="poster">
     <div class="poster__title">Афиша Самары</div>
     <toolbar class="poster__toolbar"
+             (onDayCellClick)="loadData($event)"
     ></toolbar>
     <events-list
         [data]="data"
     ></events-list>
-    <button *ngIf="data.length!=0" class="poster__action _see-more" (click)="appendData()"
+    <button *ngIf="data.length!=0"
+            class="poster__action _see-more"
+            (click)="appendData()"
     >Посмотреть ещё</button>
 </div>

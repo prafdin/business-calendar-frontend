@@ -1,14 +1,7 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
 import * as moment from 'moment';
-
-export interface MonthDictionary {
-    [monthNumber: number]: string;
-}
-
-export interface WeekDaysDictionary {
-    [weekDayNumber: number]: string;
-}
+import { monthsDictionary, weekDaysDictionary } from "../common/constants";
 
 @Component({
     selector: 'toolbar',
@@ -21,29 +14,8 @@ export class ToolbarComponent implements AfterViewInit {
     slider!: KeenSliderInstance;
 
     public calendarSliderData: any[] = [];
-    private monthsDictionary: MonthDictionary = {
-        1: "Янв",
-        2: "Фев",
-        3: "Март",
-        4: "Апр",
-        5: "Май",
-        6: "Июнь",
-        7: "Июль",
-        8: "Авг",
-        9: "Сент",
-        10: "Окт",
-        11: "Нояб",
-        12: "Дек"
-    };
-    private weekDaysDictionary: WeekDaysDictionary = {
-        1: "Пн",
-        2: "Вт",
-        3: "Ср",
-        4: "Чт",
-        5: "Пт",
-        6: "Сб",
-        0: "Вс",
-    };
+    @Output() public onDayCellClick: EventEmitter<any> = new EventEmitter<any>();
+
     public monthPickerOptions: any[] = [
         { text: "Январь", value: "Jan", slideNumber: 0 },
         { text: "Февраль", value: "Feb", slideNumber: 32 },
@@ -67,7 +39,8 @@ export class ToolbarComponent implements AfterViewInit {
                     perView: 13,
                 },
                 initial: moment().dayOfYear() + moment().month(),
-                loop: true
+                loop: true,
+                drag: false
             });
         })
         this.getYearCalendar();
@@ -83,19 +56,20 @@ export class ToolbarComponent implements AfterViewInit {
         }
         let currentMonth: number = 0;
         this.calendarSliderData.push({
-            title: this.monthsDictionary[currentMonth + 1]
+            title: monthsDictionary[currentMonth + 1]
         });
         for (let dayItem of calendar) {
             if (dayItem.month() !== currentMonth) {
                 currentMonth = dayItem.month();
                 this.calendarSliderData.push({
-                    title: this.monthsDictionary[currentMonth + 1],
+                    title: monthsDictionary[currentMonth + 1],
                     subTitle: null
                 });
             }
             this.calendarSliderData.push({
                 title: dayItem.date(),
-                subTitle: this.weekDaysDictionary[dayItem.weekday()],
+                dateISO: dayItem.format(),
+                subTitle: weekDaysDictionary[dayItem.weekday()],
                 isCurrentDate: dayItem.toDate().toLocaleDateString() === new Date().toLocaleDateString()
             });
         }
@@ -108,5 +82,14 @@ export class ToolbarComponent implements AfterViewInit {
 
     public onMonthSelect(event: any): void {
         this.slider.moveToIdx(this.monthPickerOptions.find((option) => option.value === event.value).slideNumber);
+    }
+
+    public onCellClick(dayItem: any): void {
+        if (!dayItem.subTitle) {
+            return;
+        }
+        this.calendarSliderData.find((sliderData) => sliderData.isCurrentDate).isCurrentDate = false;
+        this.calendarSliderData.find((sliderData) => sliderData.dateISO === dayItem.dateISO).isCurrentDate = true;
+        this.onDayCellClick.emit(dayItem.dateISO);
     }
 }

@@ -1,11 +1,9 @@
 <div *ngIf="data.length !=0" class="events-list">
     <event-card *ngFor="let event of data"
                 class="events-list__card"
-                [image]="event.image"
-                [price]="event.price"
-                [place]="event.place"
-                [date]="event.date"
-                [location]="event.location"
+                [image]="'http://localhost:5077/images/' + event.imageName"
+                [place]="event.address"
+                [date]="event.eventDate"
                 [title]="event.title"
     ></event-card>
 </div>
