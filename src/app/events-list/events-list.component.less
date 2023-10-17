@@ -1,5 +1,25 @@
 .events-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(386px, 1fr));
-    grid-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(386px, 1fr));
+  grid-gap: 30px;
+}
+
+.events-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0;
+
+  &__info {
+    color: #7635BD;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &__image {
+    width: 650px;
+    height: 512px;
+  }
 }

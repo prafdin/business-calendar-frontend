@@ -5,4 +5,6 @@
     <events-list
         [data]="data"
     ></events-list>
+    <button *ngIf="data.length!=0" class="poster__action _see-more" (click)="appendData()"
+    >Посмотреть ещё</button>
 </div>
