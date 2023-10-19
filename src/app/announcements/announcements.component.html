@@ -5,12 +5,12 @@
             <div class="announcements__slide keen-slider__slide number-slide1"
                  *ngFor="let announcement of data"
             >
-                <img class="announcements__slide-image" src="{{ announcement.image }}">
+                <img class="announcements__slide-image" src="{{ announcement.imageName }}">
                 <div class="announcements__slide-fade"></div>
                 <div class="announcements__slide-info-wrapper">
                     <div class="announcements__slide-title">{{ announcement.title }}</div>
-                    <div class="announcements__slide-date">{{ announcement.date }}</div>
-                    <div class="announcements__slide-place">{{ announcement.place }}</div>
+                    <div class="announcements__slide-date"><img src="../../assets/Time.svg">{{ announcement.eventDate }}</div>
+                    <div class="announcements__slide-place"><img src="../../assets/location.svg">{{ announcement.address }}</div>
                 </div>
             </div>
         </div>
