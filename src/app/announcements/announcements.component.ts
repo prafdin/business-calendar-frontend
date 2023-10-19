@@ -1,5 +1,4 @@
 import {
-    AfterViewInit,
     Component,
     ElementRef,
     OnDestroy,
@@ -17,7 +16,7 @@ import * as moment from "moment/moment";
     styleUrls: ['./announcements.component.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class AnnouncementsComponent implements AfterViewInit, OnDestroy, OnInit {
+export class AnnouncementsComponent implements OnDestroy, OnInit {
     @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
 
     currentSlide: number = 0
@@ -39,11 +38,11 @@ export class AnnouncementsComponent implements AfterViewInit, OnDestroy, OnInit 
                         eventDate: moment(announcement.eventDate).locale("ru").format("DD MMMM, HH:mm")
                     }
                 })
+                this.initSlider();
             })
     }
 
-
-    ngAfterViewInit() {
+    private initSlider(): void {
         setTimeout(() => {
             this.slider = new KeenSlider(this.sliderRef.nativeElement,
                 {
