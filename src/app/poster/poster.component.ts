@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../services/http.service";
+import * as moment from "moment";
 
 @Component({
     selector: 'poster',
@@ -8,14 +9,14 @@ import { HttpService } from "../services/http.service";
 })
 export class PosterComponent implements OnInit {
     public data: any[] = [];
-    private selectedDate: string = new Date().toISOString();
+    private selectedDate: string = moment().format("YYYY-MM-DD");
     private offset: number = 0;
 
     constructor(private httpService: HttpService) { }
 
 
     ngOnInit(): void {
-        this.httpService.getEvents(new Date().toISOString(), 0)
+        this.httpService.getEvents(moment().format("YYYY-MM-DD"), 0)
             .subscribe((res) => {
                 console.log(res);
                 this.data = res.data;

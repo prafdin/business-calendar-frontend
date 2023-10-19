@@ -68,7 +68,7 @@ export class ToolbarComponent implements AfterViewInit {
             }
             this.calendarSliderData.push({
                 title: dayItem.date(),
-                dateISO: dayItem.toDate().toISOString(),
+                date: dayItem.format("YYYY-MM-DD"),
                 subTitle: weekDaysDictionary[dayItem.weekday()],
                 isCurrentDate: dayItem.toDate().toLocaleDateString() === new Date().toLocaleDateString()
             });
@@ -89,7 +89,7 @@ export class ToolbarComponent implements AfterViewInit {
             return;
         }
         this.calendarSliderData.find((sliderData) => sliderData.isCurrentDate).isCurrentDate = false;
-        this.calendarSliderData.find((sliderData) => sliderData.dateISO === dayItem.dateISO).isCurrentDate = true;
-        this.onDayCellClick.emit(dayItem.dateISO);
+        this.calendarSliderData.find((sliderData) => sliderData.date === dayItem.date).isCurrentDate = true;
+        this.onDayCellClick.emit(dayItem.date);
     }
 }

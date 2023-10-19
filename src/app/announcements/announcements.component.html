@@ -5,7 +5,7 @@
             <div class="announcements__slide keen-slider__slide number-slide1"
                  *ngFor="let announcement of data"
             >
-                <img class="announcements__slide-image" src="{{ announcement.imageName }}">
+                <img class="announcements__slide-image" src="{{'/images/' + announcement.imageName }}">
                 <div class="announcements__slide-fade"></div>
                 <div class="announcements__slide-info-wrapper">
                     <div class="announcements__slide-title">{{ announcement.title }}</div>
