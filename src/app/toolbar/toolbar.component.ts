@@ -48,7 +48,7 @@ export class ToolbarComponent implements AfterViewInit {
 
     public getYearCalendar(): moment.Moment[] {
         const currentYear = moment().year();
-        const yearStart = moment([currentYear, 0, 1]);
+        const yearStart = moment([currentYear, 0, 1]).add(new Date().getTimezoneOffset(), "minutes");
 
         const calendar: moment.Moment[] = [];
         for (let i = 0; i < 365; i++) {
@@ -68,7 +68,7 @@ export class ToolbarComponent implements AfterViewInit {
             }
             this.calendarSliderData.push({
                 title: dayItem.date(),
-                dateISO: dayItem.format(),
+                dateISO: dayItem.toDate().toISOString(),
                 subTitle: weekDaysDictionary[dayItem.weekday()],
                 isCurrentDate: dayItem.toDate().toLocaleDateString() === new Date().toLocaleDateString()
             });
