@@ -1,0 +1,27 @@
+name: Deploy Frontend App
+
+on:
+  push
+            
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: build
+      run: |
+        npm install
+        npm run build
+    - name: archive
+      run: |
+        zip -j "bc-frontend-${{ vars.BRANCH }}-${{ vars.HASH }}-${{ vars.DATE }}.zip" dist/business-calendar/*
+    - uses: nekitcorp/yandex-storage-website-action@v2
+      with:
+        access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        bucket: ${{ secrets.BUCKET }}
+        include: |
+          *.zip
