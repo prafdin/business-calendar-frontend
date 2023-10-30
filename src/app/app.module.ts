@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {FooterComponent} from "./footer/footer.component";
 import { HttpClientModule } from "@angular/common/http";
 import {DetailedCardComponent} from "./detailed-card/detailed-card.component";
+import {HomePageComponent} from "./home-page/home-page.component";
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import {DetailedCardComponent} from "./detailed-card/detailed-card.component";
         EventsListComponent,
         ToolbarComponent,
         DetailedCardComponent,
+        HomePageComponent,
         FooterComponent
     ],
     imports: [
