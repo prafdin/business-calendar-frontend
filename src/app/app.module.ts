@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import {FooterComponent} from "./footer/footer.component";
 import { HttpClientModule } from "@angular/common/http";
+import {DetailedCardComponent} from "./detailed-card/detailed-card.component";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from "@angular/common/http";
         EventCardComponent,
         EventsListComponent,
         ToolbarComponent,
+        DetailedCardComponent,
         FooterComponent
     ],
     imports: [
