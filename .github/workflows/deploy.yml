@@ -1,0 +1,57 @@
+name: Deploy Frontend App
+
+on:
+  workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: set vars
+      id: vars
+      run: |
+        echo ::set-output name=BRANCH::${GITHUB_REF#refs/heads/}
+        echo ::set-output name=HASH::$(git rev-parse --short ${GITHUB_SHA})
+        echo ::set-output name=DATE::$(date +'%d-%m-%Y')
+    - name: set filename
+      id: filename
+      run: echo ::set-output name=FILENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.HASH }}-${{ steps.vars.outputs.DATE }}.zip}    
+
+    - name: install node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        
+    - name: build
+      run: |
+        npm install
+        npm run build
+        
+    - name: archive
+      run: |
+        zip -j "${{ steps.filename.outputs.FILENAME }}" dist/business-calendar/*
+        
+    - name: upload in yandex storage
+      uses: nekitcorp/yandex-storage-website-action@v2
+      with:
+        access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        bucket: ${{ secrets.BUCKET }}
+        include: |
+          *.zip
+          
+    - name: connect to vm and deploy 
+      uses: appleboy/ssh-action@v1.0.0
+      env: 
+        FILE: ${{ steps.filename.outputs.FILENAME }}
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        envs: FILE
+        script: |
+          s3cmd get -r s3://storage-bc/$FILE
+          sudo rm -r /var/www/site
+          sudo unzip $FILE -d /var/www/site          
