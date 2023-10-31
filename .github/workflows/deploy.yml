@@ -8,7 +8,7 @@ on:
         type: environment
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ inputs.target-env }}
@@ -36,7 +36,8 @@ jobs:
         
     - name: archive
       run: |
-        zip -j "${{ steps.filename.outputs.FILENAME }}" dist/business-calendar/*
+        cd dist/business-calendar
+        zip -r "${GITHUB_WORKSPACE}/${{ steps.filename.outputs.FILENAME }}" ./*
         
     - name: upload in yandex storage
       uses: nekitcorp/yandex-storage-website-action@v2
