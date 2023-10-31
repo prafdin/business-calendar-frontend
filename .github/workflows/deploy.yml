@@ -1,11 +1,17 @@
 name: Deploy Frontend App
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      target-env:
+        required: true
+        type: environment
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.target-env }}
     steps:
     - uses: actions/checkout@v4
     - name: set vars
@@ -16,7 +22,7 @@ jobs:
         echo ::set-output name=DATE::$(date +'%d-%m-%Y')
     - name: set filename
       id: filename
-      run: echo ::set-output name=FILENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.HASH }}-${{ steps.vars.outputs.DATE }}.zip}    
+      run: echo ::set-output name=FILENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.HASH }}-${{ steps.vars.outputs.DATE }}.zip} 
 
     - name: install node
       uses: actions/setup-node@v3
@@ -40,8 +46,9 @@ jobs:
         bucket: ${{ secrets.BUCKET }}
         include: |
           *.zip
-          
-    - name: connect to vm and deploy 
+
+    - name: connect to teststand and deploy 
+      if:  inputs.target-env == 'deploy on teststand'
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
@@ -54,4 +61,20 @@ jobs:
         script: |
           s3cmd get -r s3://storage-bc/$FILE
           sudo rm -r /var/www/site
-          sudo unzip $FILE -d /var/www/site          
+          sudo unzip $FILE -d /var/www/site
+
+    - name: connect to webserver and deploy 
+      if:  inputs.target-env == 'deploy on webserver'
+      uses: appleboy/ssh-action@v1.0.0
+      env: 
+        FILE: ${{ steps.filename.outputs.FILENAME }}
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        envs: FILE
+        script: |
+          s3cmd get -r s3://storage-bc/$FILE
+          sudo rm -r /var/www/site
+          sudo unzip $FILE -d /var/www/site
