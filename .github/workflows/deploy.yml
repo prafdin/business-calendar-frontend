@@ -8,7 +8,7 @@ on:
         type: environment
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ inputs.target-env }}
@@ -47,24 +47,7 @@ jobs:
         include: |
           *.zip
 
-    - name: connect to teststand and deploy 
-      if:  inputs.target-env == 'dev'
-      uses: appleboy/ssh-action@v1.0.0
-      env: 
-        FILE: ${{ steps.filename.outputs.FILENAME }}
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        envs: FILE
-        script: |
-          s3cmd get -r s3://storage-bc/$FILE
-          sudo rm -r /var/www/site
-          sudo unzip $FILE -d /var/www/site
-
-    - name: connect to webserver and deploy 
-      if:  inputs.target-env == 'prod'
+    - name: connect to vm and deploy 
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
