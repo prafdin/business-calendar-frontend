@@ -17,7 +17,6 @@ export class EventCardComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.date = `${moment(changes["date"].currentValue).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`;
-    this.date = this.date[0].toUpperCase() + this.date.slice(1);
     this.duration = `${moment(changes["duration"].currentValue, 'hh:mm:ss').format('H')} ч`
   }
 }

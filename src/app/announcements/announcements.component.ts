@@ -35,7 +35,8 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
                 this.data = this.data.map((announcement: any) => {
                     return {
                         ...announcement,
-                        eventDate: moment(announcement.eventDate).locale("ru").format("DD MMMM, HH:mm")
+                        eventDate: `${moment(announcement.eventDate).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`,
+                        eventDuration : `${moment(announcement.eventDuration, 'hh:mm:ss').format('H')} ч`
                     }
                 })
                 this.initSlider();
