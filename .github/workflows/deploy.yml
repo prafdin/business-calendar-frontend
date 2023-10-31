@@ -48,7 +48,7 @@ jobs:
           *.zip
 
     - name: connect to teststand and deploy 
-      if:  inputs.target-env == 'deploy on teststand'
+      if:  inputs.target-env == 'dev'
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
@@ -64,7 +64,7 @@ jobs:
           sudo unzip $FILE -d /var/www/site
 
     - name: connect to webserver and deploy 
-      if:  inputs.target-env == 'deploy on webserver'
+      if:  inputs.target-env == 'prod'
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
