@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import * as moment from "moment";
+import {DataService} from "../common/data-service";
 
 @Component({
   selector: 'event-card',
@@ -10,7 +11,6 @@ export class EventCardComponent implements OnChanges {
   @Input() public image!: string;
   @Input() public price!: string;
   @Input() public date!: string;
-  @Input() public location!: string;
   @Input() public place!: string;
   @Input() public title!: string;
   @Input() public duration!: string;

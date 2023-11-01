@@ -1,5 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
-import {EventCardComponent} from "../event-card/event-card.component";
+import {Component, Input} from '@angular/core';
 
 
 @Component({
@@ -8,8 +7,6 @@ import {EventCardComponent} from "../event-card/event-card.component";
     styleUrls: ['./detailed-card.component.less']
 })
 
-export class DetailedCardComponent  {
-
-
+export class DetailedCardComponent {
 
 }
