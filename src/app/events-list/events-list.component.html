@@ -1,11 +1,12 @@
 <div *ngIf="data.length !=0" class="events-list">
     <event-card *ngFor="let event of data"
                 class="events-list__card"
-                [image]="'/api/images/' + event.imageName"
+                [image]="'http://localhost:5077/images/' + event.imageName"
                 [place]="event.address"
                 [date]="event.eventDate"
                 [duration]="event.eventDuration"
                 [title]="event.title"
+                [description]="event.description"
     ></event-card>
 </div>
 <div *ngIf="data.length == 0" class="events-list-empty">
