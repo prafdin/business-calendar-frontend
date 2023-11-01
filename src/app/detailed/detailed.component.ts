@@ -6,19 +6,10 @@ import { Router } from "@angular/router";
   templateUrl: './detailed.component.html',
   styleUrls: ['./detailed.component.less']
 })
-export class DetailedComponent implements OnInit, AfterViewInit {
+export class DetailedComponent {
     @Input() detailedCardData: string = "";
 
     constructor(private router: Router) {
-        console.log(this.router.getCurrentNavigation()?.extras)
-    }
-
-
-    ngOnInit() {
-        console.log(this.router.getCurrentNavigation()?.extras)
-    }
-
-    ngAfterViewInit() {
         console.log(this.router.getCurrentNavigation()?.extras)
     }
 }
