@@ -1,6 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {AnnouncementsComponent} from "../announcements/announcements.component";
-import {PosterComponent} from "../poster/poster.component";
+import {Component} from '@angular/core';
+
 
 @Component({
     selector: 'home-page',
@@ -8,7 +7,5 @@ import {PosterComponent} from "../poster/poster.component";
     styleUrls: ['./home-page.component.less']
 })
 export class HomePageComponent {
-    @ViewChild('announcements') announcements!: AnnouncementsComponent;
-    @ViewChild('poster') poster!: PosterComponent;
 
 }
