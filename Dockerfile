@@ -6,4 +6,5 @@ RUN npm install
 COPY . .
 RUN npm run build
 FROM nginx:1.18.0-alpine
-COPY --from=build /var/src/app/dist/business-calendar /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /var/src/app/dist/business-calendar /var/www/site
