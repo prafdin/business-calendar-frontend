@@ -13,9 +13,10 @@
         justify-content: space-between;
     }
 
-    &-info-wrapper{
+    &-info-wrapper {
         width: 600px;
     }
+
     &__slider-wrapper {
         position: relative;
         overflow: hidden;
@@ -106,6 +107,33 @@
         line-height: 43px;
         text-align: left;
     }
+
+    &__actions {
+        text-align: right;
+    }
+
+    &__action {
+        padding: 15px 60px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+
+        &._join {
+            margin-top: 30px;
+            font-size: 36px;
+            font-weight: 300;
+            line-height: 43px;
+            text-align: center;
+            color: #FFFFFF;
+            background: #7635BD;
+            transition: background .25s;
+
+            &:hover, &:active {
+                background: #6928B0;
+            }
+        }
+    }
+
 
     [class^="number-slide"],
     [class*=" number-slide"] {

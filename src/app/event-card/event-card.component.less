@@ -45,18 +45,41 @@
         }
     }
 
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &__action {
         margin-top: 10px;
         padding: 15px 40px;
-        background: #7635BD;
         border-radius: 20px;
-        border: none;
-        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25px;
         cursor: pointer;
-        transition: background .25s;
 
-        &:hover, &:active {
-            background: #6928B0;
+
+        &._details {
+            border: 1px solid #7635BD;
+            color: #7635BD;
+            background: #F4F4F4;
+
+            &:hover, &:active {
+                background: #E8E8E8;
+            }
         }
+
+        &._join {
+            border: 1px solid #7635BD;
+            color: #FFFFFF;
+            background: #7635BD;
+            transition: background .25s;
+
+            &:hover, &:active {
+                background: #6928B0;
+            }
+        }
+
     }
 }
