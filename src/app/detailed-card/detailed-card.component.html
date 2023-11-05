@@ -1,0 +1,43 @@
+<div class="detailed-card">
+    <div class="detailed-card-wrapper">
+        <div class="detailed-card__slider-wrapper">
+            <div class="detailed-card__slider" #sliderRef>
+                <div class="detailed-card__slide keen-slider__slide number-slide1"
+                     *ngFor="let image of images"
+                >
+                    <img class="detailed-card__slide-image"
+                         src="{{'http://localhost:5077/images/' + image.name }}">
+                </div>
+            </div>
+            <svg
+                *ngIf="images.length > 1"
+                class="detailed-card__arrow arrow--left"
+                (click)="slider.prev()"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+                />
+            </svg>
+            <svg
+                *ngIf="images.length > 1"
+                class="detailed-card__arrow arrow--right"
+                (click)="slider.next()"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+            >
+                <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
+            </svg>
+        </div>
+
+
+        <div class="detailed-card-info-wrapper">
+            <div class="detailed-card__title">{{ selectedEvent.title }}</div>
+            <div class="detailed-card__date">{{ selectedEvent.date }}, {{selectedEvent.duration}}<img
+                src="../../assets/tme.svg"></div>
+            <div class="detailed-card__address">{{ selectedEvent.address }}<img src="../../assets/loc.svg"></div>
+        </div>
+    </div>
+    <div class="detailed-card__description">{{selectedEvent.description}}</div>
+</div>
