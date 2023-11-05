@@ -2,6 +2,7 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {Router} from "@angular/router";
 import KeenSlider, {KeenSliderInstance} from "keen-slider";
 import {HttpService} from "../services/http.service";
+import { BACKEND_SERVER_URL } from "../common/constants";
 
 @Component({
     selector: 'detailed-card',
@@ -18,6 +19,8 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
 
     public images: any[] = [];
     public selectedEvent: any = {};
+
+    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
     constructor(private router: Router, private httpService: HttpService) {
         this.selectedEvent = this.router.getCurrentNavigation()?.extras.state;

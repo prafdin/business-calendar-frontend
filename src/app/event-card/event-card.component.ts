@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import * as moment from "moment";
 import {Router} from "@angular/router";
+import { BACKEND_SERVER_URL } from "../common/constants";
 
 @Component({
     selector: 'event-card',
@@ -16,6 +17,7 @@ export class EventCardComponent implements OnChanges {
     @Input() public description!: string;
     @Input() public id!: string;
 
+    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
     constructor(public router: Router) {
     }
