@@ -1,5 +1,7 @@
 import { MonthDictionary, WeekDaysDictionary } from "../models/common.model";
 
+export const BACKEND_SERVER_URL = "/api"
+
 export const monthsDictionary: MonthDictionary = {
     1: "Янв",
     2: "Фев",

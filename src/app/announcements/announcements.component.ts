@@ -9,6 +9,7 @@ import {
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
 import { HttpService } from "../services/http.service";
 import * as moment from "moment/moment";
+import { BACKEND_SERVER_URL } from "../common/constants";
 
 @Component({
     selector: 'announcements',
@@ -17,7 +18,8 @@ import * as moment from "moment/moment";
     encapsulation: ViewEncapsulation.None
 })
 export class AnnouncementsComponent implements OnDestroy, OnInit {
-    @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
+    @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>;
+    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
     currentSlide: number = 0
     dotHelper: Array<Number> = []
