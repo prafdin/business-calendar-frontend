@@ -5,8 +5,8 @@
             <div class="announcements__slide keen-slider__slide number-slide1"
                  *ngFor="let announcement of data"
             >
-                <img class="announcements__slide-image" style="cursor: pointer;" (click)="onDetailsClick(announcement)" src="{{ BACKEND_SERVER_URL + '/images/' + announcement.imageName }}">
-                <div class="announcements__slide-fade" style="cursor: pointer;" (click)="onDetailsClick(announcement)"></div>
+                <img class="announcements__slide-image cursor_pointer" (click)="onDetailsClick(announcement)" src="{{ BACKEND_SERVER_URL + '/images/' + announcement.imageName }}">
+                <div class="announcements__slide-fade cursor_pointer" (click)="onDetailsClick(announcement)"></div>
                 <div class="announcements__slide-info-wrapper">
                     <div class="announcements__slide-title">{{ announcement.title }}</div>
                     <div class="announcements__slide-date"><img src="../../assets/Time.svg">{{ announcement.eventDate}} , {{announcement.eventDuration}}</div>
