@@ -52,13 +52,14 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
+        BUCKET: ${{ secrets.BUCKET }}
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        envs: FILE
+        envs: FILE,BUCKET
         script: |
-          s3cmd get -r s3://storage-bc/$FILE
+          s3cmd get -r s3://$BUCKET/$FILE
           sudo rm -r /var/www/site
           sudo unzip $FILE -d /var/www/site
