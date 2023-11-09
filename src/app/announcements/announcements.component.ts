@@ -6,10 +6,11 @@ import {
     ViewChild,
     ViewEncapsulation
 } from '@angular/core';
-import KeenSlider, { KeenSliderInstance } from "keen-slider"
-import { HttpService } from "../services/http.service";
+import KeenSlider, {KeenSliderInstance} from "keen-slider"
+import {HttpService} from "../services/http.service";
 import * as moment from "moment/moment";
-import { BACKEND_SERVER_URL } from "../common/constants";
+import {BACKEND_SERVER_URL} from "../common/constants";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'announcements',
@@ -27,7 +28,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
 
     public data: any[] = [];
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: HttpService, public router: Router) {
     }
 
     ngOnInit(): void {
@@ -38,7 +39,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
                     return {
                         ...announcement,
                         eventDate: `${moment(announcement.eventDate).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`,
-                        eventDuration : `${moment(announcement.eventDuration, 'hh:mm:ss').format('H')} ч`
+                        eventDuration: `${moment(announcement.eventDuration, 'hh:mm:ss').format('H')} ч`
                     }
                 })
                 this.initSlider();
@@ -67,5 +68,20 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
         if (this.slider) {
             this.slider.destroy();
         }
+    }
+
+    public onDetailsClick(announcement: any): void {
+        this.router.navigate(["/event"],
+            {
+                state: {
+                    title: announcement.title,
+                    image: announcement.imageName,
+                    address: announcement.address,
+                    date: announcement.eventDate,
+                    duration: announcement.eventDuration,
+                    description: announcement.description,
+                    id: announcement.id
+                }
+            })
     }
 }
