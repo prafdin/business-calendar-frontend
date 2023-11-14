@@ -54,11 +54,11 @@ jobs:
         FILE: ${{ steps.filename.outputs.FILENAME }}
         BUCKET: ${{ secrets.BUCKET }}
       with:
-        host: ${{ secrets.HOST }}
+        host: $HOST
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
+        proxy_host: $PROXY_HOST
         proxy_username: ${{ secrets.PROXY_USERNAME }}
         proxy_key: ${{ secrets.PROXY_KEY }}
         proxy_port: ${{ secrets.PROXY_PORT }}
