@@ -54,14 +54,14 @@ jobs:
         FILE: ${{ steps.filename.outputs.FILENAME }}
         BUCKET: ${{ secrets.BUCKET }}
       with:
-        host: ${{ env.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ vars.HOST }}
+        username: ${{ vars.USERNAME }}
         key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        proxy_host: ${{ env.PROXY_HOST }}
-        proxy_username: ${{ secrets.PROXY_USERNAME }}
+        port: ${{ vars.PORT }}
+        proxy_host: ${{ vars.PROXY_HOST }}
+        proxy_username: ${{ vars.PROXY_USERNAME }}
         proxy_key: ${{ secrets.PROXY_KEY }}
-        proxy_port: ${{ secrets.PROXY_PORT }}
+        proxy_port: ${{ vars.PROXY_PORT }}
         envs: FILE,BUCKET
         script: |
           s3cmd get -r s3://$BUCKET/$FILE
