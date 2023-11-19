@@ -45,26 +45,30 @@ export class RegisterEventPopupComponent {
     }
 
     public formatPhoneNumber(event: any) {
-        if (event.key !== 'Backspace') {
-            if (this.phoneNumber.length === 2) {
-                this.phoneNumber += ' (';
-            } else if (this.phoneNumber.length === 7) {
-                this.phoneNumber += ') ';
-            } else if (this.phoneNumber.length === 12) {
-                this.phoneNumber += '-';
-            } else if (this.phoneNumber.length === 15) {
-                this.phoneNumber += '-';
+        if (Number.isInteger(+event.key) || event.key === "+" || event.key === "Backspace" || event.key === "Delete") {
+            if (event.key !== 'Backspace') {
+                if (this.phoneNumber.length === 2) {
+                    this.phoneNumber += ' (';
+                } else if (this.phoneNumber.length === 7) {
+                    this.phoneNumber += ') ';
+                } else if (this.phoneNumber.length === 12) {
+                    this.phoneNumber += '-';
+                } else if (this.phoneNumber.length === 15) {
+                    this.phoneNumber += '-';
+                }
+            } else {
+                if (this.phoneNumber.length === 4) {
+                    this.phoneNumber = this.phoneNumber.slice(0, 2);
+                } else if (this.phoneNumber.length === 9) {
+                    this.phoneNumber = this.phoneNumber.slice(0, 7);
+                } else if (this.phoneNumber.length === 13) {
+                    this.phoneNumber = this.phoneNumber.slice(0, 12);
+                } else if (this.phoneNumber.length === 16) {
+                    this.phoneNumber = this.phoneNumber.slice(0, 15);
+                }
             }
         } else {
-            if (this.phoneNumber.length === 4) {
-                this.phoneNumber = this.phoneNumber.slice(0, 2);
-            } else if (this.phoneNumber.length === 9) {
-                this.phoneNumber = this.phoneNumber.slice(0, 7);
-            } else if (this.phoneNumber.length === 13) {
-                this.phoneNumber = this.phoneNumber.slice(0, 12);
-            } else if (this.phoneNumber.length === 16) {
-                this.phoneNumber = this.phoneNumber.slice(0, 15);
-            }
+            event.preventDefault();
         }
     }
 }
