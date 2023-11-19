@@ -28,6 +28,7 @@
                     maxlength="18"
                 />
             </div>
+            <span class="register-event-popup__field-error" [ngClass]="{ '_visible': registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched }">Введите в формате +7 (987) 654-32-10</span>
             <div class="register-event-popup__submit-wrapper">
                 <button class="register-event-popup__submit-btn" [disabled]="registerForm.invalid" [ngClass]="{ '_disabled': registerForm.invalid || isLoading, }">Отправить</button>
             </div>
