@@ -3,16 +3,16 @@
         <div class="register-event-popup__title">Регистрация на мероприятие</div>
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="register-event-popup__field">
-                <label for="firstName">Имя</label>
-                <input maxlength="15" type="text" placeholder="Иван" formControlName="firstName" name="firstName" id="firstName" />
-            </div>
-            <div class="register-event-popup__field">
                 <label for="lastName">Фамилия</label>
                 <input maxlength="15" type="text" placeholder="Иванов" formControlName="lastName" name="lastName" id="lastName" />
             </div>
             <div class="register-event-popup__field">
+                <label for="firstName">Имя</label>
+                <input maxlength="15" type="text" placeholder="Иван" formControlName="firstName" name="firstName" id="firstName" />
+            </div>
+            <div class="register-event-popup__field">
                 <label for="emailAddress">Электронная почта</label>
-                <input maxlength="15" type="text" placeholder="example@gmail.com" formControlName="emailAddress" name="emailAddress" id="emailAddress" />
+                <input maxlength="25" type="text" placeholder="example@gmail.com" formControlName="emailAddress" name="emailAddress" id="emailAddress" />
             </div>
             <div class="register-event-popup__field">
                 <label for="phoneNumber">Номер телефона</label>
