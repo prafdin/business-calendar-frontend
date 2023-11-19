@@ -14,6 +14,14 @@ import {FooterComponent} from "./footer/footer.component";
 import {HttpClientModule} from "@angular/common/http";
 import {DetailedCardComponent} from "./detailed-card/detailed-card.component";
 import {HomePageComponent} from "./home-page/home-page.component";
+import { RegisterEventPopupComponent } from './register-event-popup/register-event-popup.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule } from "@angular/material/button";
+import {
+    MatDialogModule,
+} from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -26,14 +34,21 @@ import {HomePageComponent} from "./home-page/home-page.component";
         ToolbarComponent,
         DetailedCardComponent,
         HomePageComponent,
-        FooterComponent
+        FooterComponent,
+        RegisterEventPopupComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatSelectModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

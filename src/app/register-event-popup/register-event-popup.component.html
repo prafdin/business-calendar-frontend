@@ -1,0 +1,45 @@
+<div class="register-event-popup" [ngClass]="{ '_request-success': responseStatus === 200 }">
+    <div class="register-event-popup__form" *ngIf="!responseStatus">
+        <div class="register-event-popup__title">Регистрация на мероприятие</div>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="register-event-popup__field">
+                <label for="firstName">Имя</label>
+                <input maxlength="15" type="text" placeholder="Иван" formControlName="firstName" name="firstName" id="firstName" />
+            </div>
+            <div class="register-event-popup__field">
+                <label for="lastName">Фамилия</label>
+                <input maxlength="15" type="text" placeholder="Иванов" formControlName="lastName" name="lastName" id="lastName" />
+            </div>
+            <div class="register-event-popup__field">
+                <label for="emailAddress">Электронная почта</label>
+                <input maxlength="15" type="text" placeholder="example@gmail.com" formControlName="emailAddress" name="emailAddress" id="emailAddress" />
+            </div>
+            <div class="register-event-popup__field">
+                <label for="phoneNumber">Номер телефона</label>
+                <input
+                    (keyup)="formatPhoneNumber($event)"
+                    (keydown)="formatPhoneNumber($event)"
+                    [(ngModel)]="phoneNumber"
+                    type="text"
+                    placeholder="+7 (987) 654-32-10"
+                    formControlName="phoneNumber"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    maxlength="18"
+                />
+            </div>
+            <div class="register-event-popup__submit-wrapper">
+                <button class="register-event-popup__submit-btn" [disabled]="registerForm.invalid" [ngClass]="{ '_disabled': registerForm.invalid || isLoading, }">Отправить</button>
+            </div>
+            <div class="register-event-popup__error-msg" *ngIf="responseStatus === 400">Что-то пошло не так, попробуйте ещё раз</div>
+        </form>
+    </div>
+    <div class="register-event-popup__success-state" *ngIf="responseStatus === 200">
+        <div class="register-event-popup__title">Ваша заявка отправлена</div>
+        <div class="register-event-popup__subtitle">В скором времени с Вами свяжется организатор</div>
+    </div>
+    <img class="register-event-popup__close-btn" src="assets/Close.svg" *ngIf="!responseStatus" (click)="dialogRef.close()">
+    <div class="register-event-popup__ok-btn-wrapper">
+        <button class="register-event-popup__ok-btn" *ngIf="responseStatus === 200" (click)="dialogRef.close()">Ок</button>
+    </div>
+</div>

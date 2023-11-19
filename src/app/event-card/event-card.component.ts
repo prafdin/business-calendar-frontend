@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import * as moment from "moment";
 import {Router} from "@angular/router";
 import { BACKEND_SERVER_URL } from "../common/constants";
+import { MatDialog } from "@angular/material/dialog";
+import { RegisterEventPopupComponent } from "../register-event-popup/register-event-popup.component";
 
 @Component({
     selector: 'event-card',
@@ -19,7 +21,7 @@ export class EventCardComponent implements OnChanges {
 
     public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
-    constructor(public router: Router) {
+    constructor(public router: Router, public dialog: MatDialog) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -42,5 +44,15 @@ export class EventCardComponent implements OnChanges {
                     id: this.id
                 }
             })
+    }
+
+    public openDialog(): void {
+        const dialogRef = this.dialog.open(RegisterEventPopupComponent, {
+            data: {eventId: this.id},
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
     }
 }
