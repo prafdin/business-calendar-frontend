@@ -55,5 +55,6 @@ jobs:
         envs: IMAGE
         script: |
           docker stop running_container
+          docker rm running_container
           docker pull $IMAGE
           docker run --restart=always --name=running_container -d -p 8080:80 $IMAGE
