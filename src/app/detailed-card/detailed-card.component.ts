@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import KeenSlider, {KeenSliderInstance} from "keen-slider";
 import {HttpService} from "../services/http.service";
 import { BACKEND_SERVER_URL } from "../common/constants";
+import { MatDialog } from "@angular/material/dialog";
+import { RegisterEventPopupComponent } from "../register-event-popup/register-event-popup.component";
 
 @Component({
     selector: 'detailed-card',
@@ -22,7 +24,7 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
 
     public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
-    constructor(private router: Router, private httpService: HttpService) {
+    constructor(private router: Router, private httpService: HttpService, public dialog: MatDialog) {
         this.selectedEvent = this.router.getCurrentNavigation()?.extras.state;
     }
 
@@ -34,6 +36,16 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
                 this.images.splice(0, 0, img);
                 this.initSlider();
             })
+    }
+
+    public openDialog(): void {
+        const dialogRef = this.dialog.open(RegisterEventPopupComponent, {
+            data: {eventId: this.selectedEvent.id},
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
     }
 
     private initSlider(): void {
