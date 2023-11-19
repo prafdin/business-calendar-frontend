@@ -54,6 +54,6 @@ jobs:
         proxy_port: ${{ vars.PROXY_PORT }}
         envs: IMAGE
         script: |
-          docker pull $IMAGE
+          sudo docker pull $IMAGE
           sudo docker stop $(docker ps -a -q)
-          docker run --restart=always -d -p 8080:80 $IMAGE
+          sudo docker run --restart=always -d -p 8080:80 $IMAGE
