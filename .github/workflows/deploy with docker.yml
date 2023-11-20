@@ -27,11 +27,11 @@ jobs:
     - name: set imagename
       id: imagename
       run: |
-        echo '### Name image: `${{ steps.imagename.outputs.IMAGENAME }}:${{ steps.vars.outputs.HASH }}` ' >> $GITHUB_STEP_SUMMARY
         echo ::set-output name=IMAGENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.DATE }}} 
         
     - name: build
       run: |
+        echo '### Name image: `${{ steps.imagename.outputs.IMAGENAME }}:${{ steps.vars.outputs.HASH }}` ' >> $GITHUB_STEP_SUMMARY
         docker build . -t cr.yandex/${{ vars.ID_CONTAINER_REGISTRY }}/${{ steps.imagename.outputs.IMAGENAME }}:${{ steps.vars.outputs.HASH }}
     - name: Login to Yandex Cloud Container Registry
       id: login-cr
