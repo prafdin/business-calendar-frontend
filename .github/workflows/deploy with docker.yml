@@ -14,7 +14,8 @@ jobs:
       name: ${{ inputs.target-env }}
     steps:
     - name: Logs
-      run: echo '### The deployment is made on the `${{ inputs.target-env }}` machine' >> $GITHUB_STEP_SUMMARY
+      run: |
+        echo '### The deployment is made on the `${{ inputs.target-env }}` machine' >> $GITHUB_STEP_SUMMARY
       
     - uses: actions/checkout@v4
     - name: set vars
@@ -25,7 +26,9 @@ jobs:
         echo ::set-output name=DATE::$(date +'%d-%m-%Y')
     - name: set imagename
       id: imagename
-      run: echo ::set-output name=IMAGENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.DATE }}} 
+      run: |
+        echo '### Name image: `${{ steps.imagename.outputs.IMAGENAME }}:${{ steps.vars.outputs.HASH }}` ' >> $GITHUB_STEP_SUMMARY
+        echo ::set-output name=IMAGENAME::${t-bc-frontend-${{ steps.vars.outputs.BRANCH }}-${{ steps.vars.outputs.DATE }}} 
         
     - name: build
       run: |
@@ -54,7 +57,7 @@ jobs:
         proxy_port: ${{ vars.PROXY_PORT }}
         envs: IMAGE
         script: |
-          docker stop running_container
-          docker rm running_container
+          docker stop last_frontend
+          docker rm last_frontend
           docker pull $IMAGE
-          docker run --restart=always --name=running_container -d -p 8080:80 $IMAGE
+          docker run -d --net=host --restart=always --name=last_frontend $IMAGE
