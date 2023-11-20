@@ -9,10 +9,10 @@
     }
 
     &__field-error {
-        position: absolute;
-        bottom: 150px;
         display: none;
         color: #ff9090;
+        position: absolute;
+        bottom: -10px;
 
         &._visible {
             display: block;
@@ -114,9 +114,11 @@
     }
 
     &__field {
+        position: relative;
         display: flex;
         flex-direction: column;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
 
         label {
             font-size: 18px;

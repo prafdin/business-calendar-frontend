@@ -10,7 +10,7 @@ import { catchError, map, throwError } from "rxjs";
   styleUrls: ['./register-event-popup.component.less']
 })
 export class RegisterEventPopupComponent {
-    public phoneNumber: string = "";
+    public phoneNumber: string = "+7 (";
     private regex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
     public isLoading: boolean = false;
     public responseStatus!: number;
@@ -45,11 +45,13 @@ export class RegisterEventPopupComponent {
     }
 
     public formatPhoneNumber(event: any) {
+        if ((event.key === "Backspace" || event.key === "Delete") && this.phoneNumber.length === 4) {
+            event.preventDefault();
+            return
+        }
         if (Number.isInteger(+event.key) || event.key === "+" || event.key === "Backspace" || event.key === "Delete") {
             if (event.key !== 'Backspace') {
-                if (this.phoneNumber.length === 2) {
-                    this.phoneNumber += ' (';
-                } else if (this.phoneNumber.length === 7) {
+                if (this.phoneNumber.length === 7) {
                     this.phoneNumber += ') ';
                 } else if (this.phoneNumber.length === 12) {
                     this.phoneNumber += '-';
@@ -57,9 +59,7 @@ export class RegisterEventPopupComponent {
                     this.phoneNumber += '-';
                 }
             } else {
-                if (this.phoneNumber.length === 4) {
-                    this.phoneNumber = this.phoneNumber.slice(0, 2);
-                } else if (this.phoneNumber.length === 9) {
+                if (this.phoneNumber.length === 9) {
                     this.phoneNumber = this.phoneNumber.slice(0, 7);
                 } else if (this.phoneNumber.length === 13) {
                     this.phoneNumber = this.phoneNumber.slice(0, 12);
