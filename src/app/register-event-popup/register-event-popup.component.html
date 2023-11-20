@@ -1,6 +1,6 @@
 <div class="register-event-popup" [ngClass]="{ '_request-success': responseStatus === 200 }">
     <div class="register-event-popup__form" *ngIf="!responseStatus">
-        <div class="register-event-popup__title">Регистрация на мероприятие</div>
+        <div class="register-event-popup__title">Регистрация <br> на мероприятие</div>
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="register-event-popup__field">
                 <label for="lastName">Фамилия</label>
@@ -33,7 +33,7 @@
                 <span class="register-event-popup__field-error" [ngClass]="{ '_visible': registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched }">Введите в формате +7 (987) 654-32-10</span>
             </div>
             <div class="register-event-popup__submit-wrapper">
-                <button class="register-event-popup__submit-btn" [disabled]="registerForm.invalid" [ngClass]="{ '_disabled': registerForm.invalid || isLoading, }">Отправить</button>
+                <button class="register-event-popup__submit-btn" [disabled]="registerForm.invalid" [ngClass]="{ '_disabled': registerForm.invalid || isLoading, }">Отправить заявку</button>
             </div>
             <div class="register-event-popup__error-msg" *ngIf="responseStatus === 400">Что-то пошло не так, попробуйте ещё раз</div>
         </form>
@@ -44,6 +44,6 @@
     </div>
     <img class="register-event-popup__close-btn" src="assets/Close.svg" *ngIf="!responseStatus" (click)="dialogRef.close()">
     <div class="register-event-popup__ok-btn-wrapper">
-        <button class="register-event-popup__ok-btn" *ngIf="responseStatus === 200" (click)="dialogRef.close()">Ок</button>
+        <button class="register-event-popup__ok-btn" *ngIf="responseStatus === 200" (click)="dialogRef.close()">ОК</button>
     </div>
 </div>
