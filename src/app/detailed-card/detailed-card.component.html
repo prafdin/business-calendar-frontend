@@ -6,7 +6,7 @@
                      *ngFor="let image of images"
                 >
                     <img class="detailed-card__slide-image"
-                         src="{{ BACKEND_SERVER_URL + '/images/' + image.name }}">
+                         src="{{ image.url }}">
                 </div>
             </div>
             <svg

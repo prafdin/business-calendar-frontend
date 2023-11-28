@@ -32,7 +32,7 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
         this.httpService.getSubImages(this.selectedEvent.id)
             .subscribe((res) => {
                 this.images = res.data;
-                let img = { name: this.selectedEvent.image};
+                let img = { url: this.selectedEvent.image};
                 this.images.splice(0, 0, img);
                 this.initSlider();
             })

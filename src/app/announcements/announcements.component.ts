@@ -75,7 +75,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
             {
                 state: {
                     title: announcement.title,
-                    image: announcement.imageName,
+                    image: announcement.imageURL,
                     address: announcement.address,
                     date: announcement.eventDate,
                     duration: announcement.eventDuration,
