@@ -1,6 +1,6 @@
 .event-card {
     width: 346px;
-    height: 486px;
+    height: 483px;
     border-radius: 20px;
     border: 3px solid #F4F4F4;
     padding: 30px 20px;
@@ -58,23 +58,28 @@
         font-weight: 500;
         line-height: 25px;
         cursor: pointer;
-        border: 1px solid #7635BD;
-        color: #7635BD;
-        background: #F4F4F4;
+        transition: all .25s;
 
 
         &._details {
+            border: 1px solid #7635BD;
+            color: #7635BD;
+            background: #F4F4F4;
 
             &:hover, &:active {
-                background: #E7E7E7;
+                background: #7635BD;
+                color: white;
             }
         }
 
         &._join {
+            border: 1px solid #7635BD;
+            color: #7635BD;
+            background: #F4F4F4;
 
             &:hover, &:active {
                 background: #7635BD;
-                color: #FFFFFF;
+                color: white;
             }
 
             &:disabled {
