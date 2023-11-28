@@ -7,6 +7,6 @@
     <div class="event-card__address"><img src="../../assets/location.svg"> {{ address }}</div>
     <div class="event-card__actions">
         <button class="event-card__action _details" (click)="onDetailsClick()">Детали</button>
-        <button class="event-card__action _join" (click)="openDialog()">Я пойду</button>
+        <button class="event-card__action _join" (click)="openDialog()" [disabled]="isAllowJoin">Я пойду</button>
     </div>
 </div>
