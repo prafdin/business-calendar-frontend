@@ -19,9 +19,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
-import {
-    MatDialogModule,
-} from "@angular/material/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
+import { LoginRegisterUserPopupComponent } from "./login-user-popup/login-register-user-popup.component";
 
 @NgModule({
     declarations: [
@@ -35,7 +34,8 @@ import {
         DetailedCardComponent,
         HomePageComponent,
         FooterComponent,
-        RegisterEventPopupComponent
+        RegisterEventPopupComponent,
+        LoginRegisterUserPopupComponent
     ],
     imports: [
         BrowserModule,

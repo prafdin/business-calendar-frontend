@@ -1,0 +1,135 @@
+.login-register-user-popup {
+    width: 700px;
+    height: 660px;
+    overflow: hidden;
+
+    &._register-user-popup {
+        height: 1100px;
+    }
+
+
+    &__field-error {
+        display: none;
+        color: #ff9090;
+        position: absolute;
+        bottom: -10px;
+
+        &._password {
+            position: relative;
+        }
+
+        &._visible {
+            display: block;
+        }
+    }
+
+
+    &__form {
+        padding: 40px 49px;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 54px;
+        font-weight: 700;
+        margin-bottom: 70px;
+        line-height: normal;
+    }
+
+    &__close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 40px;
+        margin-top: 40px;
+        cursor: pointer;
+        transition: all .25s;
+        border-radius: 10px;
+
+        &:hover {
+            background: #F4F4F4;
+        }
+    }
+
+
+    &__regLog {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+
+        &-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        &-btn {
+            color: #56BEE2;
+            cursor: pointer;
+        }
+
+    }
+
+    &__submit {
+
+        &-wrapper {
+            margin-top: 40px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        &-btn {
+            border: 1px solid #7635BD;
+            color: #FFFFFF;
+            background: #7635BD;
+            padding: 15px 40px;
+            border-radius: 20px;
+            transition: all .25s;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+
+            &._disabled {
+                background: #F4F4F4;
+                color: #C2C2C2;
+                cursor: default;
+                border: 1px solid var(--dark-gray, #C2C2C2);
+            }
+
+            &:hover:not(._disabled) {
+                background: #6928B0;
+            }
+        }
+    }
+
+    &__field {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+
+        label {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        input {
+            width: 600px;
+            height: 70px;
+            border-radius: 20px;
+            border: 1px solid var(--dark-gray, #C2C2C2);
+            font-size: 18px;
+            font-weight: 400;
+
+            &[type=text], &[type=password] {
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+
+            &::placeholder {
+                color: #C2C2C2;
+            }
+        }
+    }
+}

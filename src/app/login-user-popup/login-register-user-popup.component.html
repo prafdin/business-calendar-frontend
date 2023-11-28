@@ -1,0 +1,54 @@
+<div class="login-register-user-popup" [ngClass]="{ '_register-user-popup': isRegisterMode}">
+    <div class="login-register-user-popup__form" *ngIf="!responseStatus">
+        <div class="login-register-user-popup__title" [textContent]="isRegisterMode ? 'Регистрация' : 'Вход'"></div>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <div class="login-register-user-popup__field" *ngIf="isRegisterMode">
+                <label for="lastName">Фамилия</label>
+                <input maxlength="20" type="text" placeholder="Иванов" formControlName="lastName" name="lastName"
+                       id="lastName"/>
+                <span class="login-register-user-popup__field-error"
+                      [ngClass]="{ '_visible': loginForm.controls['lastName'].invalid && loginForm.controls['lastName'].touched }">Заполните это поле</span>
+            </div>
+            <div class="login-register-user-popup__field" *ngIf="isRegisterMode">
+                <label for="firstName">Имя</label>
+                <input maxlength="20" type="text" placeholder="Иван" formControlName="firstName" name="firstName"
+                       id="firstName"/>
+                <span class="login-register-user-popup__field-error"
+                      [ngClass]="{ '_visible': loginForm.controls['firstName'].invalid && loginForm.controls['firstName'].touched }">Заполните это поле</span>
+            </div>
+            <div class="login-register-user-popup__field">
+                <label for="emailAddress">Электронная почта</label>
+                <input maxlength="40" type="text" placeholder="example@gmail.com" formControlName="emailAddress"
+                       name="emailAddress" id="emailAddress"/>
+                <span class="login-register-user-popup__field-error _emailAddress"
+                      [ngClass]="{ '_visible': loginForm.controls['emailAddress'].invalid && loginForm.controls['emailAddress'].touched }">Введите в формате example@gmail.com</span>
+            </div>
+            <div class="login-register-user-popup__field">
+                <label for="password">Пароль</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="password" name="password"
+                       id="password"/>
+                <span class="login-register-user-popup__field-error _password"
+                      [ngClass]="{ '_visible': loginForm.controls['password'].invalid && loginForm.controls['password'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
+            </div>
+            <div class="login-register-user-popup__field" *ngIf="isRegisterMode">
+                <label for="confirmPass">Подтверждение пароля</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="confirmPass"
+                       name="confirmPass" id="confirmPass"/>
+                <span class="login-register-user-popup__field-error _confirmPass"
+                      [ngClass]="{ '_visible': loginForm.controls['confirmPass'].invalid && loginForm.controls['confirmPass'].touched }">Пароли не совпадают</span>
+            </div>
+            <div class="login-register-user-popup__submit-wrapper">
+                <button class="login-register-user-popup__submit-btn" [disabled]="loginForm.invalid"
+                        [ngClass]="{ '_disabled': loginForm.invalid || isLoading }"
+                        [textContent]="isRegisterMode ? 'Зарегистрироваться' : 'Войти'"></button>
+            </div>
+            <div class="login-register-user-popup__regLog-wrapper">
+                <div [textContent]="isRegisterMode ? 'Уже есть аккаунт?' : 'Нет аккаунта?'"></div>
+                <div class="login-register-user-popup__regLog-btn"
+                     [textContent]="isRegisterMode ? 'Войдите' : 'Зарегистрируйтесь'" (click)="switchMode()"></div>
+            </div>
+        </form>
+    </div>
+    <img class="login-register-user-popup__close-btn" src="assets/Close.svg" *ngIf="!responseStatus"
+         (click)="dialogRef.close()">
+</div>
