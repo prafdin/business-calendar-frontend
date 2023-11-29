@@ -4,17 +4,20 @@
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="register-event-popup__field">
                 <label for="lastName">Фамилия</label>
-                <input maxlength="20" type="text" placeholder="Иванов" formControlName="lastName" name="lastName" id="lastName" />
+                <input maxlength="20" type="text" placeholder="Иванов" formControlName="lastName" name="lastName" id="lastName"
+                       [ngClass]="{ '_incorrect': registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched }"/>
                 <span class="register-event-popup__field-error" [ngClass]="{ '_visible': registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched }">Заполните это поле</span>
             </div>
             <div class="register-event-popup__field">
                 <label for="firstName">Имя</label>
-                <input maxlength="20" type="text" placeholder="Иван" formControlName="firstName" name="firstName" id="firstName" />
+                <input maxlength="20" type="text" placeholder="Иван" formControlName="firstName" name="firstName" id="firstName"
+                       [ngClass]="{ '_incorrect': registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched }"/>
                 <span class="register-event-popup__field-error" [ngClass]="{ '_visible': registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched }">Заполните это поле</span>
             </div>
             <div class="register-event-popup__field">
                 <label for="emailAddress">Электронная почта</label>
-                <input maxlength="40" type="text" placeholder="example@gmail.com" formControlName="emailAddress" name="emailAddress" id="emailAddress" />
+                <input maxlength="40" type="text" placeholder="example@gmail.com" formControlName="emailAddress" name="emailAddress" id="emailAddress"
+                       [ngClass]="{ '_incorrect': registerForm.controls['emailAddress'].invalid && registerForm.controls['emailAddress'].touched }"/>
                 <span class="register-event-popup__field-error _emailAddress" [ngClass]="{ '_visible': registerForm.controls['emailAddress'].invalid && registerForm.controls['emailAddress'].touched }">Введите в формате example@gmail.com</span>
             </div>
             <div class="register-event-popup__field">
@@ -29,6 +32,7 @@
                     name="phoneNumber"
                     id="phoneNumber"
                     maxlength="18"
+                    [ngClass]="{ '_incorrect': registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched }"
                 />
                 <span class="register-event-popup__field-error" [ngClass]="{ '_visible': registerForm.controls['phoneNumber'].invalid && registerForm.controls['phoneNumber'].touched }">Введите в формате +7 (987) 654-32-10</span>
             </div>

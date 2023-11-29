@@ -6,50 +6,55 @@
 
     &__wrapper {
         display: flex;
-        width: 1220px;
+        width: 1250px;
         justify-content: space-between;
         margin: 0 auto;
     }
 
     &__action {
-        padding: 15px 35px;
-        border-radius: 20px;
-        border: none;
         cursor: pointer;
 
-        &._login {
-            width: 120px;
-            background: white;
-            color: #7635bd;
-            transition: background .25s;
-
-            &:hover {
-                background: #F4F4F4;
-            }
-
-            &:active {
-                background: #E8E8E8;
-            }
+        &._btn {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
         }
 
-        &._register {
-            width: 234px;
-            background: #7635BD;
-            color: white;
-            margin-left: 16px;
+        &._user {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        &._login {
+            width: 130px;
+            padding: 15px 40px;
+            border-radius: 20px;
+            border: 1px solid #7635BD;
+            background: #F4F4F4;
+            color: #7635BD;
             transition: background .25s;
+            font-size: 16px;
+            font-weight: 500;
 
             &:hover, &:active {
-                background: #6928B0;
+                background: #7635BD;
+                color: #FFFFFF;
             }
+
         }
     }
 
     &__actions {
-        width: 379px;
-        height: 49px;
+        text-align: right;
+        width: 150px;
+        height: 50px;
         margin-top: 12px;
         font-size: 16px;
         font-weight: 700;
     }
+
 }
+
