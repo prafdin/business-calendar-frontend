@@ -20,11 +20,13 @@ export class EventCardComponent implements OnChanges {
     @Input() public id!: string;
 
     public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
+    isAllowJoin: boolean = false;
 
     constructor(public router: Router, public dialog: MatDialog) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        this.isAllowJoin = new Date(this.date.slice(0,21)) < new Date()
         this.date = `${moment(changes["date"].currentValue).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`;
         let duration = moment(changes["duration"].currentValue, 'hh:mm:ss');
         let formatString = `${duration.hours() != 0 ? 'H час' : ''}${duration.hours() == 0 ? '' : ' '}${duration.minutes() != 0 ? 'mm минут' : ''}`;
@@ -41,7 +43,8 @@ export class EventCardComponent implements OnChanges {
                     date: this.date,
                     duration: this.duration,
                     description: this.description,
-                    id: this.id
+                    id: this.id,
+                    isAllowJoin: this.isAllowJoin
                 }
             })
     }
