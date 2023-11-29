@@ -15,7 +15,7 @@ export class LoginRegisterUserPopupComponent {
     public isRegisterMode: boolean = false;
     public responseStatus!: number;
     public loginForm: FormGroup;
-    private regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    private regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,40}$/;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string },
                 public dialogRef: MatDialogRef<LoginRegisterUserPopupComponent>,
