@@ -14,14 +14,18 @@
     &__action {
         cursor: pointer;
 
-        &._exit{
-            text-align: left;
-            font-size: 18px;
-            width: 130px;
-            height: 40px;
-            color: #000000;
-            background: #FFFFFF;
-            //border: none;
+        &._btn {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        &._user {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         &._login {
@@ -41,7 +45,6 @@
             }
 
         }
-
     }
 
     &__actions {
@@ -52,5 +55,6 @@
         font-size: 16px;
         font-weight: 700;
     }
+
 }
 

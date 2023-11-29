@@ -20,7 +20,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
+import { MatExpansionModule } from '@angular/material/expansion';
 import { LoginRegisterUserPopupComponent } from "./login-user-popup/login-register-user-popup.component";
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
     declarations: [
@@ -49,6 +52,9 @@ import { LoginRegisterUserPopupComponent } from "./login-user-popup/login-regist
         FormsModule,
         MatButtonModule,
         MatDialogModule,
+        MatExpansionModule,
+        MatListModule,
+        MatMenuModule
     ],
     providers: [],
     bootstrap: [AppComponent]
