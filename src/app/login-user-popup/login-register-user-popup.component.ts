@@ -15,6 +15,7 @@ export class LoginRegisterUserPopupComponent {
     public isRegisterMode: boolean = false;
     public responseStatus!: number;
     public loginForm: FormGroup;
+    public registerForm: FormGroup;
     private regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,40}$/;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string },
@@ -22,21 +23,27 @@ export class LoginRegisterUserPopupComponent {
                 private httpService: HttpService,
                 public dialog: MatDialog) {
         this.loginForm = new FormGroup({
+            "loginEmailAddress": new FormControl("", [Validators.required, Validators.email]),
+            "loginPassword": new FormControl("", [Validators.required]),
+        });
+        this.registerForm = new FormGroup({
             "firstName": new FormControl("", [Validators.required]),
             "lastName": new FormControl("", [Validators.required]),
             "emailAddress": new FormControl("", [Validators.required, Validators.email]),
-            "password": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
+            "registerPassword": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
             "confirmPass": new FormControl("", [Validators.required])
         });
-        this.loginForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.loginForm.get('password')!));
-        this.loginForm.get('confirmPass')!.updateValueAndValidity();
+        this.registerForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.registerForm.get('registerPassword')!));
+        this.registerForm.get('registerPassword')!.valueChanges.subscribe(() => {
+            this.registerForm.get('confirmPass')!.updateValueAndValidity();
+        });
     }
 
     passwordMatchValidator(control: AbstractControl): ValidatorFn {
         return (confirmPassControl: AbstractControl): ValidationErrors | null => {
-            const password = control.value;
+            const registerPassword = control.value;
             const confirmPass = confirmPassControl.value;
-            if (password === confirmPass) {
+            if (registerPassword === confirmPass) {
                 return null;
             } else {
                 return {mismatchedPasswords: true};
