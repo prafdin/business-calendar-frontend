@@ -41,6 +41,7 @@
     </div>
     <div class="detailed-card__description">{{selectedEvent.description}}</div>
     <div class="detailed-card__actions">
+        <button class="detailed-card__action _back" (click)="onHomeClick()">Назад</button>
         <button class="detailed-card__action _join" (click)="openDialog()" [disabled]="selectedEvent.isAllowJoin">Я пойду</button>
     </div>
 </div>

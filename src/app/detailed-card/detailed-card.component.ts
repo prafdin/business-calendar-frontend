@@ -2,9 +2,9 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {Router} from "@angular/router";
 import KeenSlider, {KeenSliderInstance} from "keen-slider";
 import {HttpService} from "../services/http.service";
-import { BACKEND_SERVER_URL } from "../common/constants";
-import { MatDialog } from "@angular/material/dialog";
-import { RegisterEventPopupComponent } from "../register-event-popup/register-event-popup.component";
+import {BACKEND_SERVER_URL} from "../common/constants";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterEventPopupComponent} from "../register-event-popup/register-event-popup.component";
 
 @Component({
     selector: 'detailed-card',
@@ -32,7 +32,7 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
         this.httpService.getSubImages(this.selectedEvent.id)
             .subscribe((res) => {
                 this.images = res.data;
-                let img = { url: this.selectedEvent.image};
+                let img = {url: this.selectedEvent.image};
                 this.images.splice(0, 0, img);
                 this.initSlider();
             })
@@ -71,4 +71,9 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
             this.slider.destroy();
         }
     }
+
+    public onHomeClick(): void {
+        this.router.navigate([""])
+    }
+
 }
