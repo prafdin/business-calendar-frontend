@@ -27,13 +27,14 @@
                       [ngClass]="{ '_visible': registerForm.controls['emailAddress'].invalid && registerForm.controls['emailAddress'].touched }">Введите в формате example@gmail.com</span>
             </div>
             <div class="login-register-user-popup__field">
-                <label for="registerPassword">Пароль</label>
-                <input maxlength="30" type="password" placeholder="password" formControlName="registerPassword" name="registerPassword"
-                       id="registerPassword"
+                <label for="registerPass">Пароль</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="registerPass"
+                       name="registerPass"
+                       id="registerPass"
 
-                       [ngClass]="{ '_incorrect': registerForm.controls['registerPassword'].invalid && registerForm.controls['registerPassword'].touched }"/>
+                       [ngClass]="{ '_incorrect': registerForm.controls['registerPass'].invalid && registerForm.controls['registerPass'].touched }"/>
                 <span class="login-register-user-popup__field-error _password"
-                      [ngClass]="{ '_visible': registerForm.controls['registerPassword'].invalid && registerForm.controls['registerPassword'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
+                      [ngClass]="{ '_visible': registerForm.controls['registerPass'].invalid && registerForm.controls['registerPass'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
             </div>
             <div class="login-register-user-popup__field">
                 <label for="confirmPass">Подтверждение пароля</label>
@@ -45,7 +46,8 @@
             </div>
             <div class="login-register-user-popup__submit-wrapper">
                 <button class="login-register-user-popup__submit-btn" [disabled]="registerForm.invalid"
-                        [ngClass]="{ '_disabled': registerForm.invalid }">Зарегистрироваться</button>
+                        [ngClass]="{ '_disabled': registerForm.invalid }">Зарегистрироваться
+                </button>
             </div>
         </form>
         <form [formGroup]="loginForm" *ngIf="!isRegisterMode" (ngSubmit)="submit()">
@@ -58,16 +60,18 @@
                       [ngClass]="{ '_visible': loginForm.controls['loginEmailAddress'].invalid && loginForm.controls['loginEmailAddress'].touched }">Введите в формате example@gmail.com</span>
             </div>
             <div class="login-register-user-popup__field">
-                <label for="loginPassword">Пароль</label>
-                <input maxlength="30" type="password" placeholder="password" formControlName="loginPassword" name="loginPassword"
-                       id="loginPassword"
-                       [ngClass]="{ '_incorrect': loginForm.controls['loginPassword'].invalid && loginForm.controls['loginPassword'].touched }"/>
+                <label for="loginPass">Пароль</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="loginPass"
+                       name="loginPass"
+                       id="loginPass"
+                       [ngClass]="{ '_incorrect': loginForm.controls['loginPass'].invalid && loginForm.controls['loginPass'].touched }"/>
                 <span class="login-register-user-popup__field-error _password"
-                      [ngClass]="{ '_visible': loginForm.controls['loginPassword'].invalid && loginForm.controls['loginPassword'].touched }">Заполните это поле</span>
+                      [ngClass]="{ '_visible': loginForm.controls['loginPass'].invalid && loginForm.controls['loginPass'].touched }">Заполните это поле</span>
             </div>
             <div class="login-register-user-popup__submit-wrapper">
                 <button class="login-register-user-popup__submit-btn" [disabled]="loginForm.invalid"
-                        [ngClass]="{ '_disabled': loginForm.invalid }">Войти</button>
+                        [ngClass]="{ '_disabled': loginForm.invalid }">Войти
+                </button>
             </div>
         </form>
         <div class="login-register-user-popup__regLog-wrapper">

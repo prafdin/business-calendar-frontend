@@ -24,26 +24,26 @@ export class LoginRegisterUserPopupComponent {
                 public dialog: MatDialog) {
         this.loginForm = new FormGroup({
             "loginEmailAddress": new FormControl("", [Validators.required, Validators.email]),
-            "loginPassword": new FormControl("", [Validators.required]),
+            "loginPass": new FormControl("", [Validators.required]),
         });
         this.registerForm = new FormGroup({
             "firstName": new FormControl("", [Validators.required]),
             "lastName": new FormControl("", [Validators.required]),
             "emailAddress": new FormControl("", [Validators.required, Validators.email]),
-            "registerPassword": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
+            "registerPass": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
             "confirmPass": new FormControl("", [Validators.required])
         });
-        this.registerForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.registerForm.get('registerPassword')!));
-        this.registerForm.get('registerPassword')!.valueChanges.subscribe(() => {
+        this.registerForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.registerForm.get('registerPass')!));
+        this.registerForm.get('registerPass')!.valueChanges.subscribe(() => {
             this.registerForm.get('confirmPass')!.updateValueAndValidity();
         });
     }
 
     passwordMatchValidator(control: AbstractControl): ValidatorFn {
         return (confirmPassControl: AbstractControl): ValidationErrors | null => {
-            const registerPassword = control.value;
+            const registerPass = control.value;
             const confirmPass = confirmPassControl.value;
-            if (registerPassword === confirmPass) {
+            if (registerPass === confirmPass) {
                 return null;
             } else {
                 return {mismatchedPasswords: true};
