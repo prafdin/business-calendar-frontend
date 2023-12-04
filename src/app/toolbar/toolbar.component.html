@@ -7,7 +7,7 @@
     <div class="toolbar__calendar-wrapper">
         <div class="toolbar__calendar-icon"></div>
         <div class="toolbar__calendar-arrow-left"></div>
-        <div class="toolbar__calendar">
+        <div class="toolbar__calendar" *ngIf="!!calendarSliderData.length">
             <mat-form-field class="toolbar__calendar-month-picker">
                 <mat-label>Месяц</mat-label>
                 <mat-select [(value)]="selectedMonth"
