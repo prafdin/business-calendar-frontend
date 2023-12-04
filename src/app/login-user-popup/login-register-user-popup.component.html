@@ -32,7 +32,9 @@
                        id="password"
                        [ngClass]="{ '_incorrect': loginForm.controls['password'].invalid && loginForm.controls['password'].touched }"/>
                 <span class="login-register-user-popup__field-error _password"
-                      [ngClass]="{ '_visible': loginForm.controls['password'].invalid && loginForm.controls['password'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
+                      [ngClass]="{ '_visible': loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched }">Поле обязательно для заполнения</span>
+                <span class="login-register-user-popup__field-error _password"
+                      [ngClass]="{ '_visible': !loginForm.controls['password'].hasError('required') && loginForm.controls['password'].hasError('randomErrorName') && loginForm.controls['password'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
             </div>
             <div class="login-register-user-popup__field" *ngIf="isRegisterMode">
                 <label for="confirmPass">Подтверждение пароля</label>

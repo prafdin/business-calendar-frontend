@@ -25,7 +25,7 @@ export class LoginRegisterUserPopupComponent {
             "firstName": new FormControl("", [Validators.required]),
             "lastName": new FormControl("", [Validators.required]),
             "emailAddress": new FormControl("", [Validators.required, Validators.email]),
-            "password": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
+            "password": new FormControl("", [Validators.required, this.randomPasswordValidator()]),
             "confirmPass": new FormControl("", [Validators.required])
         });
         this.loginForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.loginForm.get('password')!));
@@ -41,6 +41,15 @@ export class LoginRegisterUserPopupComponent {
             } else {
                 return {mismatchedPasswords: true};
             }
+        };
+    }
+
+    public randomPasswordValidator(): ValidatorFn {
+        return (
+            control: AbstractControl
+        ): { [key: string]: boolean } | null => {
+            let valid = this.regex.test(control.value);
+            return valid ? null : { randomErrorName: true };
         };
     }
 
@@ -63,6 +72,13 @@ export class LoginRegisterUserPopupComponent {
 
     public switchMode(): void {
         this.isRegisterMode = !this.isRegisterMode;
+        if (this.isRegisterMode) {
+            this.loginForm.get('confirmPass')?.clearValidators();
+            this.loginForm.get('confirmPass')?.setValidators([Validators.required, this.passwordMatchValidator(this.loginForm.get("password") as AbstractControl)]);
+        } else {
+            this.loginForm.get('confirmPass')?.clearValidators();
+            this.loginForm.get('confirmPass')?.setValidators([Validators.required]);
+        }
         // this.loginForm.markAsUntouched({onlySelf: true});
         this.loginForm.reset();
     }
