@@ -39,6 +39,7 @@ export class ToolbarComponent implements AfterViewInit {
         { text: "Декабрь", value: "Dec", slideNumber: 345 },
     ];
     public selectedMonth = this.monthPickerOptions[moment().month()].value;
+    public selectedSlide: number = moment().dayOfYear() + moment().month();
 
     constructor(private cdr: ChangeDetectorRef) {
     }
@@ -84,7 +85,8 @@ export class ToolbarComponent implements AfterViewInit {
     }
 
     public onMonthSelect(event: any): void {
-        this.slider.moveToIdx(this.monthPickerOptions.find((option) => option.value === event.value).slideNumber);
+        this.selectedSlide = this.monthPickerOptions.find((option) => option.value === event.value).slideNumber;
+        this.slider.moveToIdx(this.selectedSlide);
     }
 
     public onCellClick(dayItem: any): void {
@@ -93,6 +95,17 @@ export class ToolbarComponent implements AfterViewInit {
         }
         this.calendarSliderData.find((sliderData) => sliderData.isCurrentDate).isCurrentDate = false;
         this.calendarSliderData.find((sliderData) => sliderData.date === dayItem.date).isCurrentDate = true;
+        this.selectedMonth = this.monthPickerOptions[moment(dayItem.date).month()].value;
         this.onDayCellClick.emit(dayItem.date);
+    }
+
+    public next(): void {
+        this.selectedSlide += 2;
+        this.slider.moveToIdx(this.selectedSlide);
+    }
+
+    public prev(): void {
+        this.selectedSlide -= 2;
+        this.slider.moveToIdx(this.selectedSlide);
     }
 }
