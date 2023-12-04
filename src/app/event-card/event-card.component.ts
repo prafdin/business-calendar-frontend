@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import * as moment from "moment";
 import {Router} from "@angular/router";
-import { BACKEND_SERVER_URL } from "../common/constants";
 import { MatDialog } from "@angular/material/dialog";
 import { RegisterEventPopupComponent } from "../register-event-popup/register-event-popup.component";
 
@@ -19,7 +18,6 @@ export class EventCardComponent implements OnChanges {
     @Input() public description!: string;
     @Input() public id!: string;
 
-    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
     isAllowJoin: boolean = false;
 
     constructor(public router: Router, public dialog: MatDialog) {
@@ -36,16 +34,7 @@ export class EventCardComponent implements OnChanges {
     public onDetailsClick(): void {
         this.router.navigate(["/event"],
             {
-                state: {
-                    title: this.title,
-                    image: this.image,
-                    address: this.address,
-                    date: this.date,
-                    duration: this.duration,
-                    description: this.description,
-                    id: this.id,
-                    isAllowJoin: this.isAllowJoin
-                }
+                queryParams: { eventId: this.id },
             })
     }
 

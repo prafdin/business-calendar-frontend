@@ -9,7 +9,6 @@ import {
 import KeenSlider, {KeenSliderInstance} from "keen-slider"
 import {HttpService} from "../services/http.service";
 import * as moment from "moment/moment";
-import {BACKEND_SERVER_URL} from "../common/constants";
 import {Router} from "@angular/router";
 
 @Component({
@@ -20,7 +19,6 @@ import {Router} from "@angular/router";
 })
 export class AnnouncementsComponent implements OnDestroy, OnInit {
     @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>;
-    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
 
     currentSlide: number = 0
     dotHelper: Array<Number> = []
@@ -73,15 +71,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
     public onDetailsClick(announcement: any): void {
         this.router.navigate(["/event"],
             {
-                state: {
-                    title: announcement.title,
-                    image: announcement.imageURL,
-                    address: announcement.address,
-                    date: announcement.eventDate,
-                    duration: announcement.eventDuration,
-                    description: announcement.description,
-                    id: announcement.id
-                }
+                queryParams: { eventId: announcement.id },
             })
     }
 }

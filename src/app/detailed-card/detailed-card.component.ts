@@ -1,10 +1,11 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import KeenSlider, {KeenSliderInstance} from "keen-slider";
 import {HttpService} from "../services/http.service";
-import { BACKEND_SERVER_URL } from "../common/constants";
-import { MatDialog } from "@angular/material/dialog";
-import { RegisterEventPopupComponent } from "../register-event-popup/register-event-popup.component";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterEventPopupComponent} from "../register-event-popup/register-event-popup.component";
+import { switchMap } from "rxjs";
+import * as moment from "moment";
 
 @Component({
     selector: 'detailed-card',
@@ -22,19 +23,29 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
     public images: any[] = [];
     public selectedEvent: any = {};
 
-    public readonly BACKEND_SERVER_URL = BACKEND_SERVER_URL;
-
-    constructor(private router: Router, private httpService: HttpService, public dialog: MatDialog) {
-        this.selectedEvent = this.router.getCurrentNavigation()?.extras.state;
+    constructor(private router: Router, private httpService: HttpService, public dialog: MatDialog, private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.httpService.getSubImages(this.selectedEvent.id)
-            .subscribe((res) => {
-                this.images = res.data;
-                let img = { url: this.selectedEvent.image};
-                this.images.splice(0, 0, img);
-                this.initSlider();
+        this.route.queryParams
+            .pipe(
+                switchMap((value) => {
+                    const eventId: string = (value as { eventId: string }).eventId;
+                    return this.httpService.getSubImages(eventId)
+                        .pipe(
+                            switchMap((res) => {
+                                this.images = res.data;
+                                this.initSlider();
+
+                                return this.httpService.getEvent(eventId)
+                            })
+                        )
+                })
+            )
+            .subscribe((event) => {
+                this.selectedEvent = event.data;
+                this.selectedEvent.eventDuration = moment(this.selectedEvent.eventDuration, 'hh:mm:ss').locale("ru").format('H [ч] m [мин]');
+                this.images = [{ url: this.selectedEvent.imageURL }, ...this.images];
             })
     }
 
@@ -71,4 +82,9 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
             this.slider.destroy();
         }
     }
+
+    public onHomeClick(): void {
+        this.router.navigate([""])
+    }
+
 }

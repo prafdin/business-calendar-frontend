@@ -7,7 +7,7 @@
     <div class="toolbar__calendar-wrapper">
         <div class="toolbar__calendar-icon"></div>
         <div class="toolbar__calendar-arrow-left"></div>
-        <div class="toolbar__calendar">
+        <div class="toolbar__calendar" *ngIf="!!calendarSliderData.length">
             <mat-form-field class="toolbar__calendar-month-picker">
                 <mat-label>Месяц</mat-label>
                 <mat-select [(value)]="selectedMonth"
@@ -40,7 +40,7 @@
                 </div>
                 <svg
                     class="toolbar__calendar-arrow arrow--left"
-                    (click)="slider.prev()"
+                    (click)="prev()"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
@@ -51,7 +51,7 @@
                 <svg
                     *ngIf="slider"
                     class="toolbar__calendar-arrow arrow--right"
-                    (click)="slider.next()"
+                    (click)="next()"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >

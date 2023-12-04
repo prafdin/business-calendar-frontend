@@ -16,11 +16,15 @@ export class HttpService {
         return this.http.get(BACKEND_SERVER_URL + `/Event/targetdate=${date}&offset=${offset}`);
     }
 
+    public getEvent(eventId: string): Observable<any> {
+        return this.http.get(BACKEND_SERVER_URL + `/Event/id=${eventId}`);
+    }
+
     public getAnnouncements(): Observable<any> {
         return this.http.get(BACKEND_SERVER_URL + `/Event/currentdate=${moment().add(new Date().getTimezoneOffset() * (-1), "minutes").toISOString()}`);
     }
 
-    public getSubImages(eventId: bigint): Observable<any> {
+    public getSubImages(eventId: string): Observable<any> {
         return this.http.get(BACKEND_SERVER_URL + `/Image/event_id=${eventId}`);
     }
 
