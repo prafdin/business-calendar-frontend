@@ -13,6 +13,8 @@ jobs:
     environment: 
       name: ${{ inputs.target-env }}
     steps:
+    - name: Logs
+      run: echo '### The deployment is made on the `${{ inputs.target-env }}` machine' >> $GITHUB_STEP_SUMMARY
     - uses: actions/checkout@v4
     - name: set vars
       id: vars
@@ -52,13 +54,18 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       env: 
         FILE: ${{ steps.filename.outputs.FILENAME }}
+        BUCKET: ${{ secrets.BUCKET }}
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ vars.HOST }}
+        username: ${{ vars.USERNAME }}
         key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        envs: FILE
+        port: ${{ vars.PORT }}
+        proxy_host: ${{ vars.PROXY_HOST }}
+        proxy_username: ${{ vars.PROXY_USERNAME }}
+        proxy_key: ${{ secrets.PROXY_KEY }}
+        proxy_port: ${{ vars.PROXY_PORT }}
+        envs: FILE,BUCKET
         script: |
-          s3cmd get -r s3://storage-bc/$FILE
+          s3cmd get -r s3://$BUCKET/$FILE
           sudo rm -r /var/www/site
           sudo unzip $FILE -d /var/www/site
