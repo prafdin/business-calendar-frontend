@@ -1,0 +1,63 @@
+<div class="auth-user-popup" [ngClass]="{ '_register-user-popup': isRegisterMode}">
+    <div class="auth-user-popup__form" *ngIf="!responseStatus">
+        <div class="auth-user-popup__title" [textContent]="isRegisterMode ? 'Регистрация' : 'Вход'"></div>
+        <form [formGroup]="authForm" (ngSubmit)="submit()">
+            <div class="auth-user-popup__field" *ngIf="isRegisterMode">
+                <label for="lastName">Фамилия</label>
+                <input maxlength="20" type="text" placeholder="Иванов" formControlName="lastName" name="lastName"
+                       id="lastName"
+                       [ngClass]="{ '_incorrect': authForm.controls['lastName'].invalid && authForm.controls['lastName'].touched }"/>
+                <span class="auth-user-popup__field-error"
+                      [ngClass]="{ '_visible': authForm.controls['lastName'].invalid && authForm.controls['lastName'].touched }">Введите фамилию</span>
+            </div>
+            <div class="auth-user-popup__field" *ngIf="isRegisterMode">
+                <label for="firstName">Имя</label>
+                <input maxlength="20" type="text" placeholder="Иван" formControlName="firstName" name="firstName"
+                       id="firstName"
+                       [ngClass]="{ '_incorrect': authForm.controls['firstName'].invalid && authForm.controls['firstName'].touched }"/>
+                <span class="auth-user-popup__field-error"
+                      [ngClass]="{ '_visible': authForm.controls['firstName'].invalid && authForm.controls['firstName'].touched }">Введите имя</span>
+            </div>
+            <div class="auth-user-popup__field">
+                <label for="emailAddress">Электронная почта</label>
+                <input maxlength="40" type="text" placeholder="example@gmail.com" formControlName="emailAddress"
+                       name="emailAddress" id="emailAddress"
+                       [ngClass]="{ '_incorrect': authForm.controls['emailAddress'].invalid && authForm.controls['emailAddress'].touched }"/>
+                <span class="auth-user-popup__field-error _emailAddress"
+                      [ngClass]="{ '_visible': authForm.controls['emailAddress'].hasError('required') && authForm.controls['emailAddress'].touched }">Введите адрес электроной почты</span>
+                <span class="auth-user-popup__field-error _emailAddress"
+                      [ngClass]="{ '_visible': !authForm.controls['emailAddress'].hasError('required') && authForm.controls['emailAddress'].hasError('email') && authForm.controls['emailAddress'].touched }">Введите в формате example@gmail.com</span>
+            </div>
+            <div class="auth-user-popup__field">
+                <label for="password">Пароль</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="password" name="password"
+                       id="password"
+                       [ngClass]="{ '_incorrect': authForm.controls['password'].invalid && authForm.controls['password'].touched }"/>
+                <span class="auth-user-popup__field-error _password"
+                      [ngClass]="{ '_visible': authForm.controls['password'].hasError('required') && authForm.controls['password'].touched }">Введите пароль</span>
+                <span class="auth-user-popup__field-error _password"
+                      [ngClass]="{ '_visible': !authForm.controls['password'].hasError('required') && authForm.controls['password'].hasError('randomErrorName') && authForm.controls['password'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
+            </div>
+            <div class="auth-user-popup__field" *ngIf="isRegisterMode">
+                <label for="confirmPass">Подтверждение пароля</label>
+                <input maxlength="30" type="password" placeholder="password" formControlName="confirmPass"
+                       name="confirmPass" id="confirmPass"
+                       [ngClass]="{ '_incorrect': authForm.controls['confirmPass'].invalid && authForm.controls['confirmPass'].touched }"/>
+                <span class="auth-user-popup__field-error _confirmPass"
+                      [ngClass]="{ '_visible': authForm.controls['confirmPass'].invalid && authForm.controls['confirmPass'].touched }">Пароли не совпадают</span>
+            </div>
+            <div class="auth-user-popup__submit-wrapper">
+                <button class="auth-user-popup__submit-btn" [disabled]="authForm.invalid"
+                        [ngClass]="{ '_disabled': authForm.invalid || isLoading }"
+                        [textContent]="isRegisterMode ? 'Зарегистрироваться' : 'Войти'"></button>
+            </div>
+            <div class="auth-user-popup__regLog-wrapper">
+                <div [textContent]="isRegisterMode ? 'Уже есть аккаунт?' : 'Нет аккаунта?'"></div>
+                <div class="auth-user-popup__regLog-btn"
+                     [textContent]="isRegisterMode ? 'Войдите' : 'Зарегистрируйтесь'" (click)="switchMode()"></div>
+            </div>
+        </form>
+    </div>
+    <img class="auth-user-popup__close-btn" src="assets/Close.svg" *ngIf="!responseStatus"
+         (click)="dialogRef.close()">
+</div>

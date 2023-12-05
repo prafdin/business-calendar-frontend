@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {LoginRegisterUserPopupComponent} from "../login-user-popup/login-register-user-popup.component";
+import {AuthUserPopupComponent} from "../login-user-popup/auth-user-popup.component";
 
 
 @Component({
@@ -16,7 +16,7 @@ export class HeaderComponent {
     }
 
     public openDialog(): void {
-        const dialogRef = this.dialog.open(LoginRegisterUserPopupComponent);
+        const dialogRef = this.dialog.open(AuthUserPopupComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
