@@ -3,7 +3,7 @@
         <img class="header-menu__logo" src="../../assets/logo.svg"/>
         <div class="header-menu__actions">
             <button *ngIf="!isAuth" class="header-menu__action _login" (click)="openDialog()">Войти</button>
-            <button class="header-menu__action _btn" *ngIf="isAuth" mat-icon-button [matMenuTriggerFor]="userMenu">
+            <button class="header-menu__action _btn" title="Иван Иванов" *ngIf="isAuth" mat-icon-button [matMenuTriggerFor]="userMenu">
                 <img class="header-menu__action _user" src="../../assets/user.svg"/>
             </button>
             <mat-menu #userMenu="matMenu">

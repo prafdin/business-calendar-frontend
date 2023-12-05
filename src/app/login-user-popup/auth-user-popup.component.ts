@@ -7,29 +7,38 @@ import {catchError, throwError} from "rxjs";
 
 @Component({
     selector: 'app-login-register-user-popup',
-    templateUrl: './login-register-user-popup.component.html',
-    styleUrls: ['./login-register-user-popup.component.less']
+    templateUrl: './auth-user-popup.component.html',
+    styleUrls: ['./auth-user-popup.component.less']
 })
-export class LoginRegisterUserPopupComponent {
+export class AuthUserPopupComponent {
     public isLoading: boolean = false;
     public isRegisterMode: boolean = false;
     public responseStatus!: number;
-    public loginForm: FormGroup;
+    public authForm: FormGroup;
     private regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,40}$/;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string },
-                public dialogRef: MatDialogRef<LoginRegisterUserPopupComponent>,
+                public dialogRef: MatDialogRef<AuthUserPopupComponent>,
                 private httpService: HttpService,
                 public dialog: MatDialog) {
-        this.loginForm = new FormGroup({
-            "firstName": new FormControl("", [Validators.required]),
-            "lastName": new FormControl("", [Validators.required]),
+        this.authForm = new FormGroup({
+            "firstName": new FormControl(""),
+            "lastName": new FormControl(""),
             "emailAddress": new FormControl("", [Validators.required, Validators.email]),
-            "password": new FormControl("", [Validators.required, Validators.pattern(this.regex)]),
-            "confirmPass": new FormControl("", [Validators.required])
+            "password": new FormControl("", [Validators.required, this.randomPasswordValidator()]),
+            "confirmPass": new FormControl("")
         });
-        this.loginForm.get('confirmPass')!.setValidators(this.passwordMatchValidator(this.loginForm.get('password')!));
-        this.loginForm.get('confirmPass')!.updateValueAndValidity();
+        this.authForm.get('password')!.valueChanges.subscribe(() => {
+            this.authForm.get('confirmPass')!.updateValueAndValidity();
+        });
+    }
+    public randomPasswordValidator(): ValidatorFn {
+        return (
+            control: AbstractControl
+        ): { [key: string]: boolean } | null => {
+            let valid = this.regex.test(control.value);
+            return valid || !this.isRegisterMode ? null : { randomErrorName: true };
+        };
     }
 
     passwordMatchValidator(control: AbstractControl): ValidatorFn {
@@ -46,7 +55,7 @@ export class LoginRegisterUserPopupComponent {
 
     public submit(): void {
         this.isLoading = true;
-        this.httpService.registerToEvent(this.loginForm.value, this.data.eventId)
+        this.httpService.registerToEvent(this.authForm.value, this.data.eventId)
             .pipe(
                 catchError((err) => {
                     this.responseStatus = err.status;
@@ -63,8 +72,17 @@ export class LoginRegisterUserPopupComponent {
 
     public switchMode(): void {
         this.isRegisterMode = !this.isRegisterMode;
-        // this.loginForm.markAsUntouched({onlySelf: true});
-        this.loginForm.reset();
+        if (this.isRegisterMode) {
+            this.authForm.get('lastName')?.setValidators([Validators.required]);
+            this.authForm.get('firstName')?.setValidators([Validators.required]);
+            this.authForm.get('confirmPass')?.setValidators([Validators.required, this.passwordMatchValidator(this.authForm.get("password") as AbstractControl)]);
+        } else {
+            this.authForm.get('lastName')?.clearValidators();
+            this.authForm.get('firstName')?.clearValidators();
+            this.authForm.get('confirmPass')?.clearValidators();
+        }
+        // this.authForm.markAsUntouched({onlySelf: true});
+        this.authForm.reset();
     }
 
 }

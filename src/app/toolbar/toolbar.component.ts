@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Output,
+    ViewChild
+} from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider";
 import * as moment from 'moment';
 import { monthsDictionary, weekDaysDictionary } from "../common/constants";
@@ -31,6 +39,10 @@ export class ToolbarComponent implements AfterViewInit {
         { text: "Декабрь", value: "Dec", slideNumber: 345 },
     ];
     public selectedMonth = this.monthPickerOptions[moment().month()].value;
+    public selectedSlide: number = moment().dayOfYear() + moment().month();
+
+    constructor(private cdr: ChangeDetectorRef) {
+    }
 
     ngAfterViewInit() {
         setTimeout(() => {
@@ -39,41 +51,33 @@ export class ToolbarComponent implements AfterViewInit {
                     perView: 13,
                 },
                 initial: moment().dayOfYear() + moment().month(),
-                loop: true,
-                drag: false
+                loop: true
             });
         })
-        this.getYearCalendar();
+        this.calendarSliderData = this.getYearCalendar(moment().year());
+        this.cdr.detectChanges();
     }
 
-    public getYearCalendar(): moment.Moment[] {
-        const currentYear = moment().year();
-        const yearStart = moment([currentYear, 0, 1]).add(new Date().getTimezoneOffset(), "minutes");
+    public getYearCalendar(yearNumber: number): any[] {
+        const year = moment([yearNumber]).year();
+        const calendarData: any[] = [];
 
-        const calendar: moment.Moment[] = [];
-        for (let i = 0; i < 365; i++) {
-            calendar.push(yearStart.clone().add(i, 'days'));
-        }
-        let currentMonth: number = 0;
-        this.calendarSliderData.push({
-            title: monthsDictionary[currentMonth + 1]
-        });
-        for (let dayItem of calendar) {
-            if (dayItem.month() !== currentMonth) {
-                currentMonth = dayItem.month();
-                this.calendarSliderData.push({
-                    title: monthsDictionary[currentMonth + 1],
-                    subTitle: null
+        for (let month = 0; month < 12; month++) {
+            calendarData.push({ title: monthsDictionary[month + 1], subTitle: null });
+
+            const daysInMonth = moment([year, month]).daysInMonth();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = moment([year, month, day]);
+                calendarData.push({
+                    title: day,
+                    subTitle: weekDaysDictionary[date.weekday()],
+                    date: date.format('YYYY-MM-DD'),
+                    isCurrentDate: date.toDate().toLocaleDateString() === new Date().toLocaleDateString()
                 });
             }
-            this.calendarSliderData.push({
-                title: dayItem.date(),
-                date: dayItem.format("YYYY-MM-DD"),
-                subTitle: weekDaysDictionary[dayItem.weekday()],
-                isCurrentDate: dayItem.toDate().toLocaleDateString() === new Date().toLocaleDateString()
-            });
         }
-        return calendar;
+
+        return calendarData;
     }
 
     public isWeekendDay(day: string): boolean {
@@ -81,7 +85,8 @@ export class ToolbarComponent implements AfterViewInit {
     }
 
     public onMonthSelect(event: any): void {
-        this.slider.moveToIdx(this.monthPickerOptions.find((option) => option.value === event.value).slideNumber);
+        this.selectedSlide = this.monthPickerOptions.find((option) => option.value === event.value).slideNumber;
+        this.slider.moveToIdx(this.selectedSlide);
     }
 
     public onCellClick(dayItem: any): void {
@@ -90,6 +95,17 @@ export class ToolbarComponent implements AfterViewInit {
         }
         this.calendarSliderData.find((sliderData) => sliderData.isCurrentDate).isCurrentDate = false;
         this.calendarSliderData.find((sliderData) => sliderData.date === dayItem.date).isCurrentDate = true;
+        this.selectedMonth = this.monthPickerOptions[moment(dayItem.date).month()].value;
         this.onDayCellClick.emit(dayItem.date);
+    }
+
+    public next(): void {
+        this.selectedSlide += 2;
+        this.slider.moveToIdx(this.selectedSlide);
+    }
+
+    public prev(): void {
+        this.selectedSlide -= 2;
+        this.slider.moveToIdx(this.selectedSlide);
     }
 }

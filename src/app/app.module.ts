@@ -21,7 +21,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { MatExpansionModule } from '@angular/material/expansion';
-import { LoginRegisterUserPopupComponent } from "./login-user-popup/login-register-user-popup.component";
+import { AuthUserPopupComponent } from "./login-user-popup/auth-user-popup.component";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 
@@ -38,7 +38,7 @@ import {MatMenuModule} from "@angular/material/menu";
         HomePageComponent,
         FooterComponent,
         RegisterEventPopupComponent,
-        LoginRegisterUserPopupComponent
+        AuthUserPopupComponent
     ],
     imports: [
         BrowserModule,

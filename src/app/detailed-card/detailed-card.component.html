@@ -34,13 +34,14 @@
 
         <div class="detailed-card-info-wrapper">
             <div class="detailed-card__title">{{ selectedEvent.title }}</div>
-            <div class="detailed-card__date">{{ selectedEvent.date }}, {{selectedEvent.duration}}<img
+            <div class="detailed-card__date">{{ selectedEvent.date }}, {{selectedEvent.eventDuration}}<img
                 src="../../assets/tme.svg"></div>
             <div class="detailed-card__address">{{ selectedEvent.address }}<img src="../../assets/loc.svg"></div>
         </div>
     </div>
     <div class="detailed-card__description">{{selectedEvent.description}}</div>
     <div class="detailed-card__actions">
+        <button class="detailed-card__action _back" (click)="onHomeClick()">Назад</button>
         <button class="detailed-card__action _join" (click)="openDialog()" [disabled]="selectedEvent.isAllowJoin">Я пойду</button>
     </div>
 </div>
