@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AuthUserPopupComponent} from "../login-user-popup/auth-user-popup.component";
+import {AuthUserPopupComponent} from "../auth-user-popup/auth-user-popup.component";
 
 
 @Component({
