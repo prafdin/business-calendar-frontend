@@ -44,6 +44,7 @@ export class DetailedCardComponent implements OnDestroy, OnInit {
             )
             .subscribe((event) => {
                 this.selectedEvent = event.data;
+                this.selectedEvent.date = `${moment(this.selectedEvent.date).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`;
                 this.selectedEvent.eventDuration = moment(this.selectedEvent.eventDuration, 'hh:mm:ss').locale("ru").format('H [ч] m [мин]');
                 this.images = [{ url: this.selectedEvent.imageURL }, ...this.images];
             })
