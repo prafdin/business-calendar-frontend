@@ -2,7 +2,7 @@ import {
     Component,
     ElementRef,
     OnDestroy,
-    OnInit, SimpleChanges,
+    OnInit,
     ViewChild,
     ViewEncapsulation
 } from '@angular/core';
@@ -45,7 +45,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
                 this.initSlider();
             })
     }
-    
+
     private initSlider(): void {
         setTimeout(() => {
             this.slider = new KeenSlider(this.sliderRef.nativeElement,
@@ -73,7 +73,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
     public onDetailsClick(announcement: any): void {
         this.router.navigate(["/event"],
             {
-                queryParams: { eventId: announcement.id },
+                queryParams: {eventId: announcement.id},
             })
     }
 }

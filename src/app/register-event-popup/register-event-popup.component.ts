@@ -1,13 +1,13 @@
-import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { HttpService } from "../services/http.service";
-import { catchError, map, throwError } from "rxjs";
+import {Component, Inject} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {HttpService} from "../services/http.service";
+import {catchError, throwError} from "rxjs";
 
 @Component({
-  selector: 'app-register-event-popup',
-  templateUrl: './register-event-popup.component.html',
-  styleUrls: ['./register-event-popup.component.less']
+    selector: 'app-register-event-popup',
+    templateUrl: './register-event-popup.component.html',
+    styleUrls: ['./register-event-popup.component.less']
 })
 export class RegisterEventPopupComponent {
     public phoneNumber: string = "+7 (";
@@ -21,7 +21,7 @@ export class RegisterEventPopupComponent {
     ) {
     }
 
-    public registerForm : FormGroup = new FormGroup({
+    public registerForm: FormGroup = new FormGroup({
         "firstName": new FormControl("", [Validators.required]),
         "lastName": new FormControl("", [Validators.required]),
         "emailAddress": new FormControl("", [Validators.required, Validators.email]),
