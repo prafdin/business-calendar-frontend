@@ -27,7 +27,7 @@ export class EventCardComponent implements OnChanges {
         this.isAllowJoin = new Date(this.date.slice(0,21)) < new Date()
         this.date = `${moment(changes["date"].currentValue).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`;
         let duration = moment(changes["duration"].currentValue, 'hh:mm:ss');
-        let formatString = `${duration.hours() != 0 ? 'H час' : ''}${duration.hours() == 0 ? '' : ' '}${duration.minutes() != 0 ? 'mm минут' : ''}`;
+        let formatString = `${duration.hours() != 0 ? 'H ч' : ''}${duration.hours() == 0 ? '' : ' '}${duration.minutes() != 0 ? 'mm мин' : ''}`;
         this.duration = `${duration.format(formatString)}`
     }
 

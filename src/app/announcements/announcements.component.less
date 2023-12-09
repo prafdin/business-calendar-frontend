@@ -112,27 +112,32 @@
         display: flex;
     }
 
-    &__arrow {
-        width: 40px;
-        height: 40px;
+    &__arrow-box {
+        width: 70px;
+        height: 500px;
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
         fill: #fff;
         cursor: pointer;
         transition: background .25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        &.arrow--left {
-            left: 5px;
+        &._arrow-left {
+            left: 0;
         }
 
-        &.arrow--right {
+        &._arrow-right {
+            right: 0;
             left: auto;
-            right: 5px;
         }
     }
 
+    &__arrow {
+        width: 40px;
+    }
 
     [class^="number-slide"],
     [class*=" number-slide"] {
