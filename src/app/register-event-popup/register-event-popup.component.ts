@@ -49,8 +49,8 @@ export class RegisterEventPopupComponent {
             event.preventDefault();
             return
         }
-        if (this.phoneNumber.length === 0) {
-            this.phoneNumber += '+7 (';
+        if (this.phoneNumber.length < 4) {
+            this.phoneNumber = '+7 (';
         }
         if (Number.isInteger(+event.key) || event.key === "+" || event.key === "Backspace" || event.key === "Delete") {
             if (event.key !== 'Backspace') {
