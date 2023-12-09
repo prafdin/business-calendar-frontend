@@ -34,10 +34,12 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
             .subscribe((res) => {
                 this.data = res.data;
                 this.data = this.data.map((announcement: any) => {
+                    let duration = moment(announcement.eventDuration, 'hh:mm:ss');
+                    let formatString = `${duration.hours() != 0 ? 'H ч' : ''}${duration.hours() == 0 ? '' : ' '}${duration.minutes() != 0 ? 'mm мин' : ''}`;
                     return {
                         ...announcement,
                         eventDate: `${moment(announcement.eventDate).add(new Date().getTimezoneOffset(), "minutes").locale("ru").format("DD MMMM, HH:mm")}`,
-                        eventDuration: `${moment(announcement.eventDuration, 'hh:mm:ss').format('H')} ч`
+                        eventDuration: `${duration.format(formatString)}`
                     }
                 })
                 this.initSlider();
@@ -71,7 +73,7 @@ export class AnnouncementsComponent implements OnDestroy, OnInit {
     public onDetailsClick(announcement: any): void {
         this.router.navigate(["/event"],
             {
-                queryParams: { eventId: announcement.id },
+                queryParams: {eventId: announcement.id},
             })
     }
 }

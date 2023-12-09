@@ -6,7 +6,7 @@ import {catchError, throwError} from "rxjs";
 
 
 @Component({
-    selector: 'app-login-register-user-popup',
+    selector: 'app-auth-user-popup',
     templateUrl: './auth-user-popup.component.html',
     styleUrls: ['./auth-user-popup.component.less']
 })
