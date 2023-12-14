@@ -1,6 +1,6 @@
 .register-event-popup {
     width: 40vw;
-    height: 88vh;
+    height: 90vh;
     overflow: hidden;
 
 
@@ -14,6 +14,7 @@
         color: #ff9090;
         position: absolute;
         bottom: -10px;
+        font-size: 18px;
 
         &._visible {
             display: block;
@@ -159,7 +160,7 @@
 }
 @media (max-height: 600px){
     .register-event-popup__title {
-        font-size: 24px;
+        font-size: 20px;
         margin-bottom: 5.5%;
     }
 
@@ -176,10 +177,13 @@
 
     .register-event-popup__submit-btn{
         padding: 10px 25px;
-        font-size: 14px;
+        font-size: 12px;
+    }
+    .register-event-popup__field-error {
+        font-size: 12px;
     }
     .register-event-popup__field {
-        margin-bottom: 4px;
+        margin-bottom: 2px;
         padding-bottom: 10px;
 
         label {
@@ -187,8 +191,8 @@
         }
 
         input {
-            height: 45px;
-            font-size: 14px;
+            height: 40px;
+            font-size: 12px;
         }
     }
 
@@ -196,7 +200,7 @@
 @media (max-height: 800px) and (min-height: 601px) {
 
     .register-event-popup__title {
-        font-size: 30px;
+        font-size: 26px;
         margin-bottom: 5.5%;
     }
 
@@ -211,12 +215,16 @@
         margin-top: 25px;
     }
 
+    .register-event-popup__field-error {
+        font-size: 14px;
+    }
+
     .register-event-popup__field {
         margin-bottom: 8px;
         padding-bottom: 14px;
 
         label {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         input {
@@ -228,7 +236,6 @@
         padding: 10px 25px;
         font-size: 16px;
     }
-
 
 }
 
@@ -253,6 +260,19 @@
     .register-event-popup__field {
         margin-bottom: 14px;
         padding-bottom: 18px;
+
+        label {
+            font-size: 16px;
+        }
+
+        input {
+            height: 60px;
+            font-size: 16px;
+        }
+    }
+    .register-event-popup__submit-btn{
+        padding: 10px 25px;
+        font-size: 18px;
     }
 
 }
