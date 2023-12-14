@@ -36,7 +36,8 @@
                 <span class="auth-user-popup__field-error _password"
                       [ngClass]="{ '_visible': authForm.controls['password'].hasError('required') && authForm.controls['password'].touched }">Введите пароль</span>
                 <span class="auth-user-popup__field-error _password"
-                      [ngClass]="{ '_visible': !authForm.controls['password'].hasError('required') && authForm.controls['password'].hasError('randomErrorName') && authForm.controls['password'].touched }">Длина пароля должна быть не менее 8 символов, а также содержать хотя бы одну прописную и строчную буквы, цифру и специальный символ(@$!%*?&).</span>
+                      [ngClass]="{ '_visible': !authForm.controls['password'].hasError('required') && authForm.controls['password'].hasError('randomErrorName') && authForm.controls['password'].touched }">
+                    Длина пароля должна быть не менее 8 символов.</span>
             </div>
             <div class="auth-user-popup__field" *ngIf="isRegisterMode">
                 <label for="confirmPass">Подтверждение пароля</label>
