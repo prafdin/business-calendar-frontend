@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'business-calendar';
+
+    constructor() {
+        // @ts-ignore
+        console.log(process.env["TESTT1"])
+    }
+
 }
